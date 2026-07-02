@@ -1,0 +1,34 @@
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
+export default function TravelPrepPage() {
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-between font-sans">
+      <Navigation />
+      {/* Unified Header Section */}
+      <div className="w-full bg-white pt-32 pb-16">
+        <div className="container mx-auto px-6 max-w-4xl text-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Travel Prep & Gear</h1>
+          <p className="text-xl text-gray-900 leading-relaxed mb-10">
+            Proper preparation is key to an enjoyable experience in the Himalayas. Here is a general guide to what you should bring.
+          </p>
+          <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-left">
+            <h3 className="font-bold text-gray-900 text-xl mb-4">Essential Gear</h3>
+            <ul className="list-disc pl-6 space-y-4 text-gray-600">
+              <li>Sturdy, broken-in trekking boots</li>
+              <li>Layered clothing (thermal base layers, fleece, and a waterproof/windproof outer shell)</li>
+              <li>A high-quality sleeping bag (if trekking)</li>
+              <li>Reusable water bottle and water purification tablets</li>
+              <li>Personal first-aid kit and any required medications</li>
+              <li>Sun protection (sunglasses, sunscreen, wide-brimmed hat)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <Footer />
+      <FloatingWhatsApp />
+    </main>
+  );
+}
