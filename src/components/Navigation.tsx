@@ -56,9 +56,9 @@ export default function Navigation() {
               <path d="M12 11c2 0 4.5 1 6 3 1.5 2 2 4.5 2 6-3 0-5-1-7.5-3.5" />
               <circle cx="12" cy="7" r="1.5" fill="currentColor" stroke="none" />
             </svg>
-            <span className={`text-xl font-bold tracking-tight transition-colors flex items-center gap-1.5 ${isSolid ? "text-gray-900" : "text-white"}`}>
-              <span>Bodhi Tree Journeys <sup className="text-red-600 font-extrabold text-sm">NP</sup></span>
-              <span className="animate-bounce inline-block text-2xl" style={{ animationDuration: '2s' }}>🇳🇵</span>
+            <span className={`text-lg md:text-xl font-bold tracking-tight transition-colors flex items-center gap-1 md:gap-1.5 ${isSolid || isMobileMenuOpen ? "text-gray-900" : "text-white"}`}>
+              <span className="truncate">Bodhi Tree Journeys <sup className="text-red-600 font-extrabold text-xs md:text-sm">NP</sup></span>
+              <span className="animate-bounce inline-block text-xl md:text-2xl" style={{ animationDuration: '2s' }}>🇳🇵</span>
             </span>
           </div>
         </Link>
