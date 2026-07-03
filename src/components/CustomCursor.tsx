@@ -63,18 +63,6 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Outer trailing circle */}
-      <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border-2 border-orange-500 pointer-events-none z-[9999] mix-blend-difference hidden md:block"
-        style={{
-          x: springX,
-          y: springY,
-          opacity: isVisible ? 1 : 0,
-          scale: isHovering ? 1.5 : 1,
-          backgroundColor: isHovering ? "rgba(249, 115, 22, 0.2)" : "transparent",
-        }}
-        transition={{ scale: { duration: 0.2 } }}
-      />
       {/* Inner dot that follows exactly (Now a Buddha icon) */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9999] hidden md:flex items-center justify-center"
@@ -82,15 +70,17 @@ export default function CustomCursor() {
           // Center the 48x48 icon on the cursor
           x: useTransform(cursorX, v => v - 8),
           y: useTransform(cursorY, v => v - 8),
-          opacity: isVisible && !isHovering ? 1 : 0,
+          opacity: isVisible ? 1 : 0,
+          scale: isHovering ? 1.5 : 1,
         }}
+        transition={{ scale: { type: "spring", stiffness: 300, damping: 20 } }}
       >
         <img 
-          src="/buddha-cursor.png" 
+          src="/buddha-cursor-transparent.png" 
           alt="Buddha Cursor" 
           width={48} 
           height={48}
-          className="w-12 h-12 object-contain dark:invert mix-blend-multiply dark:mix-blend-screen"
+          className="w-12 h-12 object-contain"
         />
       </motion.div>
     </>
