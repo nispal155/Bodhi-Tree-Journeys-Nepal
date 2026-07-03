@@ -40,22 +40,7 @@ export default function Navigation() {
       <div className="container mx-auto px-6 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 z-50">
           <div className="flex items-center gap-2">
-            <style dangerouslySetInnerHTML={{__html: `
-              @keyframes float-buddha {
-                0% { transform: translateY(0px); }
-                50% { transform: translateY(-4px); }
-                100% { transform: translateY(0px); }
-              }
-              .animate-float-buddha {
-                animation: float-buddha 3s ease-in-out infinite;
-              }
-            `}} />
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-9 h-9 text-orange-500 animate-float-buddha" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 3c-1.5 2-3 5-3 8 0 3 2 6 3 9 1-3 3-6 3-9 0-3-1.5-6-3-8z" />
-              <path d="M12 11c-2 0-4.5 1-6 3-1.5 2-2 4.5-2 6 3 0 5-1 7.5-3.5" />
-              <path d="M12 11c2 0 4.5 1 6 3 1.5 2 2 4.5 2 6-3 0-5-1-7.5-3.5" />
-              <circle cx="12" cy="7" r="1.5" fill="currentColor" stroke="none" />
-            </svg>
+            <img src="/logoicon.png" alt="Bodhi Tree Journeys Logo" className="w-10 h-10 md:w-12 md:h-12 object-contain drop-shadow-sm" />
             <span className={`text-lg md:text-xl font-bold tracking-tight transition-colors flex items-center gap-1 md:gap-1.5 ${isSolid || isMobileMenuOpen ? "text-gray-900" : "text-white"}`}>
               <span className="truncate">Bodhi Tree Journeys <sup className="text-red-600 font-extrabold text-xs md:text-sm">NP</sup></span>
               <span className="animate-bounce inline-block text-xl md:text-2xl" style={{ animationDuration: '2s' }}>🇳🇵</span>
