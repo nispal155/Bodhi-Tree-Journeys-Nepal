@@ -8,7 +8,7 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { submit } = useWeb3forms({
-    access_key: "YOUR_ACCESS_KEY_HERE", // User needs to replace this
+    access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE", // Set NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY in your environment variables or replace here
     settings: {
       subject: "New Inquiry from Bodhi Tree Journeys Nepal",
     },
