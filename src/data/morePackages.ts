@@ -5,7 +5,7 @@ export const morePackages: TourPackage[] = [
     slug: "pilgrimage-to-lumbini",
     title: "Pilgrimage to Lumbini",
     overview: "Follow the footsteps of Buddha in this sacred journey to his birthplace, exploring ancient monasteries and peaceful gardens.",
-    image: "/placeholder-tour-1.jpg",
+    image: "/lumbini_temple.png",
     tourType: "Pilgrimage Tour",
     duration: "4 Nights / 5 Days",
     route: "Kathmandu → Lumbini → Kathmandu",
