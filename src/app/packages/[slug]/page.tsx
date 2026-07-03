@@ -161,7 +161,7 @@ export default async function PackageDetailsPage({ params }: { params: Promise<{
               </div>
 
               <Link 
-                href="/contact" 
+                href={`/contact?package=${encodeURIComponent(tour.title)}`} 
                 className="block w-full py-4 px-6 text-center bg-orange-500 hover:bg-orange-600 text-white rounded-xl font-bold transition-colors shadow-lg hover:shadow-xl"
               >
                 Book This Tour

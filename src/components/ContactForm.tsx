@@ -1,11 +1,24 @@
 "use client";
 
 import useWeb3forms from "@web3forms/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function ContactForm() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [interest, setInterest] = useState("Package");
+  const [customPackage, setCustomPackage] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const pkg = params.get("package");
+      if (pkg) {
+        setCustomPackage(pkg);
+        setInterest(pkg);
+      }
+    }
+  }, []);
 
   const { submit } = useWeb3forms({
     access_key: "bd71c217-841e-4ddf-8681-81584484dca0",
@@ -112,8 +125,11 @@ export default function ContactForm() {
 
                 <div>
                   <label htmlFor="interest" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Area of Interest</label>
-                  <select id="interest" name="interest" className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all">
-                    <option value="Package">I'm Interested in this package</option>
+                  <select id="interest" name="interest" value={interest} onChange={(e) => setInterest(e.target.value)} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all">
+                    {customPackage && (
+                      <option value={customPackage}>Interested in: {customPackage}</option>
+                    )}
+                    <option value="Package">I'm Interested in a Package</option>
                     <option value="Pilgrimage">Pilgrimage Tours</option>
                     <option value="Trekking">Himalayan Trekking</option>
                     <option value="Cultural">Cultural & Heritage</option>
