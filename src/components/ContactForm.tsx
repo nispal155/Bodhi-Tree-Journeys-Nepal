@@ -92,12 +92,24 @@ export default function ContactForm() {
                   <label htmlFor="interest" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Area of Interest</label>
                   <select id="interest" name="interest" className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all">
                     <option value="">Select a category</option>
+                    <option value="Package">I'm Interested in this package</option>
                     <option value="Pilgrimage">Pilgrimage Tours</option>
                     <option value="Trekking">Himalayan Trekking</option>
                     <option value="Cultural">Cultural & Heritage</option>
                     <option value="Wellness">Wellness & Spiritual</option>
                     <option value="Custom">Custom / Luxury</option>
                   </select>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="fromDate" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Travel Dates (From)</label>
+                    <input type="date" id="fromDate" name="fromDate" className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" />
+                  </div>
+                  <div>
+                    <label htmlFor="toDate" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Travel Dates (To)</label>
+                    <input type="date" id="toDate" name="toDate" className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" />
+                  </div>
                 </div>
 
                 <div>
