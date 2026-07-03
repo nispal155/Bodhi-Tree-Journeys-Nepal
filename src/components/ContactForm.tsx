@@ -8,7 +8,7 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { submit } = useWeb3forms({
-    access_key: "ef4e677d-faf5-4be7-9a59-e48e7543773a",
+    access_key: "bd71c217-841e-4ddf-8681-81584484dca0",
     settings: {
       subject: "New Inquiry from Bodhi Tree Journeys Nepal",
     },

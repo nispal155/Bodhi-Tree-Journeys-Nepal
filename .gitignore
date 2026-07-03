@@ -44,3 +44,14 @@ next-env.d.ts
 AI-HANDOFF.md
 .cursorrules
 .cline*
+.AI-HANDOFF.md
+.cursor/
+.cursorignore
+.cline/
+.gemini/
+.aider*
+.windsurfrules
+.cody/
+.copilot/
+.devbuddy/
+
