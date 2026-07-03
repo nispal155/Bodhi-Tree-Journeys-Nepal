@@ -2,6 +2,8 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
+import { tourPackages } from "@/data/packages";
+
 interface TourCategoriesProps {
   limit?: number;
   showViewAll?: boolean;
@@ -9,58 +11,7 @@ interface TourCategoriesProps {
 }
 
 export default function TourCategories({ limit, showViewAll = false, hideHeader = false }: TourCategoriesProps) {
-  const allJourneys = [
-    {
-      title: "Regular Tour Programs",
-      tag: "Tours",
-      image: "/placeholder-tour-1.jpg",
-      desc: "Discover the best of Nepal with our well-curated standard itineraries for all ages.",
-    },
-    {
-      title: "Pilgrimage Tours",
-      tag: "Pilgrimage",
-      image: "/placeholder-tour-2.jpg",
-      desc: "Sacred journeys to Lumbini, Muktinath, and ancient holy monasteries across the Himalayas.",
-    },
-    {
-      title: "Wellness & Spiritual Tours",
-      tag: "Wellness",
-      image: "/placeholder-tour-4.jpg",
-      desc: "Rejuvenate your mind and body with deeply immersive yoga and meditation retreats.",
-    },
-    {
-      title: "Himalayan Trekking",
-      tag: "Trek",
-      image: "/placeholder-tour-3.jpg",
-      desc: "Adventure into the heart of the world's highest mountains with our expert Sherpa guides.",
-    },
-    {
-      title: "Educational Tour Programs",
-      tag: "Education",
-      image: "/placeholder-tour-5.jpg",
-      desc: "Immersive learning experiences tailored for students, researchers, and cultural enthusiasts.",
-    },
-    {
-      title: "Cultural & Heritage Journeys",
-      tag: "Cultural",
-      image: "/placeholder-tour-6.jpg",
-      desc: "Explore ancient cities, magnificent temples, and rich UNESCO World Heritage sites.",
-    },
-    {
-      title: "Nature & Wildlife",
-      tag: "Wildlife",
-      image: "/placeholder-tour-7.jpg",
-      desc: "Experience thrilling jungle safaris and wildlife spotting in Chitwan and Bardia.",
-    },
-    {
-      title: "Custom Private & Luxury Journeys",
-      tag: "Luxury",
-      image: "/hero-placeholder.jpg",
-      desc: "Tailor-made, premium experiences designed exclusively for your comfort and preferences.",
-    }
-  ];
-
-  const journeys = limit ? allJourneys.slice(0, limit) : allJourneys;
+  const journeys = limit ? tourPackages.slice(0, limit) : tourPackages;
 
   return (
     <section id="packages" className="w-full py-24 bg-white dark:bg-black transition-colors duration-300">
@@ -83,7 +34,7 @@ export default function TourCategories({ limit, showViewAll = false, hideHeader 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left mb-16">
           {journeys.map((tour, i) => (
             <div key={i} className="group bg-white/70 dark:bg-zinc-900/40 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.7)] border border-white/50 dark:border-white/10 overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(255,100,0,0.2)] dark:hover:shadow-[0_20px_40px_-15px_rgba(255,100,0,0.4)] hover:border-orange-200 dark:hover:border-orange-500/50">
-              <div className="relative h-64 w-full overflow-hidden">
+              <Link href={`/packages/${tour.slug}`} className="block relative h-64 w-full overflow-hidden cursor-pointer">
                 <Image
                   src={tour.image}
                   alt={tour.title}
@@ -91,16 +42,19 @@ export default function TourCategories({ limit, showViewAll = false, hideHeader 
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute top-4 left-4 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
-                  {tour.tag}
+                  {tour.duration}
                 </div>
-              </div>
+              </Link>
               <div className="p-6 flex flex-col flex-grow">
-                <h3 className="font-bold text-xl text-red-600 mb-2 transition-colors duration-300 group-hover:text-orange-500">{tour.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm mb-6 flex-grow">{tour.desc}</p>
+                <Link href={`/packages/${tour.slug}`}>
+                  <h3 className="font-bold text-xl text-red-600 mb-2 transition-colors duration-300 group-hover:text-orange-500 line-clamp-2">{tour.title}</h3>
+                </Link>
+                <p className="text-gray-600 dark:text-gray-400 text-sm mb-6 flex-grow line-clamp-3">{tour.overview}</p>
                 
-                <div className="flex items-center justify-end pt-4 border-t border-gray-100 dark:border-zinc-800">
-                  <Link href="/contact" className="px-5 py-2 bg-orange-500 text-white font-medium rounded-full text-sm transition-all duration-300 group-hover:bg-orange-600 group-hover:shadow-md group-hover:scale-105">
-                    Book Now
+                <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-zinc-800">
+                  <span className="text-xs font-medium text-gray-500 dark:text-gray-400">{tour.route.split('→')[0].trim()}...</span>
+                  <Link href={`/packages/${tour.slug}`} className="px-5 py-2 bg-orange-500 text-white font-medium rounded-full text-sm transition-all duration-300 group-hover:bg-orange-600 group-hover:shadow-md group-hover:scale-105">
+                    View Details
                   </Link>
                 </div>
               </div>
