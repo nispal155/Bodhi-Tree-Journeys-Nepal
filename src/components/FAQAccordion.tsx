@@ -34,7 +34,7 @@ export default function FAQAccordion() {
   };
 
   return (
-    <section id="faq" className="w-full py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
+    <section id="faq" className="w-full py-24 bg-white dark:bg-black transition-colors duration-300">
       <div className="container mx-auto px-6 max-w-3xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Frequently Asked Questions</h2>
@@ -45,7 +45,7 @@ export default function FAQAccordion() {
           {faqs.map((faq, index) => (
             <div 
               key={index} 
-              className={`border rounded-xl transition-all duration-300 ${openIndex === index ? 'border-red-200 dark:border-red-800 shadow-md bg-white dark:bg-slate-800' : 'border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/50'}`}
+              className={`border rounded-xl transition-all duration-300 ${openIndex === index ? 'border-red-200 dark:border-red-800 shadow-md bg-white dark:bg-zinc-950' : 'border-gray-200 dark:border-zinc-800 bg-gray-50 dark:bg-zinc-950/50'}`}
             >
               <button
                 className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none"

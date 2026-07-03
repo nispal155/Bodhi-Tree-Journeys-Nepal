@@ -63,16 +63,16 @@ export default function TourCategories({ limit, showViewAll = false, hideHeader 
   const journeys = limit ? allJourneys.slice(0, limit) : allJourneys;
 
   return (
-    <section id="packages" className="w-full py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
+    <section id="packages" className="w-full py-24 bg-white dark:bg-black transition-colors duration-300">
       <div className="container mx-auto px-6 text-center">
         {!hideHeader && (
           <>
             <div className="flex items-center justify-center gap-4 mb-4">
-              <div className="h-px bg-gray-200 dark:bg-slate-700 w-12" />
+              <div className="h-px bg-gray-200 dark:bg-zinc-900 w-12" />
               <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-red-400">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/>
               </svg>
-              <div className="h-px bg-gray-200 dark:bg-slate-700 w-12" />
+              <div className="h-px bg-gray-200 dark:bg-zinc-900 w-12" />
             </div>
             
             <h2 className="text-4xl font-bold text-red-600 mb-4">Featured Packages</h2>
@@ -82,7 +82,7 @@ export default function TourCategories({ limit, showViewAll = false, hideHeader 
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left mb-16">
           {journeys.map((tour, i) => (
-            <div key={i} className="group bg-white dark:bg-slate-800 rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] dark:shadow-slate-900/50 border border-gray-100 dark:border-slate-700 overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(255,100,0,0.15)] hover:border-orange-100 dark:hover:border-orange-800">
+            <div key={i} className="group bg-white dark:bg-zinc-950 rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] dark:shadow-black/60 border border-gray-100 dark:border-zinc-800 overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(255,100,0,0.15)] hover:border-orange-100 dark:hover:border-orange-800">
               <div className="relative h-64 w-full overflow-hidden">
                 <Image
                   src={tour.image}
@@ -98,7 +98,7 @@ export default function TourCategories({ limit, showViewAll = false, hideHeader 
                 <h3 className="font-bold text-xl text-red-600 mb-2 transition-colors duration-300 group-hover:text-orange-500">{tour.title}</h3>
                 <p className="text-gray-600 dark:text-gray-400 text-sm mb-6 flex-grow">{tour.desc}</p>
                 
-                <div className="flex items-center justify-end pt-4 border-t border-gray-100 dark:border-slate-700">
+                <div className="flex items-center justify-end pt-4 border-t border-gray-100 dark:border-zinc-800">
                   <Link href="/contact" className="px-5 py-2 bg-orange-500 text-white font-medium rounded-full text-sm transition-all duration-300 group-hover:bg-orange-600 group-hover:shadow-md group-hover:scale-105">
                     Book Now
                   </Link>

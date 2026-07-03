@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="w-full bg-gradient-to-b from-red-700 to-red-900 dark:from-slate-900 dark:to-slate-950 text-white pt-20 pb-10 transition-colors duration-300">
+    <footer className="w-full bg-gradient-to-b from-red-700 to-red-900 dark:from-black dark:to-zinc-950 text-white pt-20 pb-10 transition-colors duration-300">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="lg:col-span-1">

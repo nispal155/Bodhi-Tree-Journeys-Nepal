@@ -35,7 +35,7 @@ export default function Navigation() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isSolid ? "bg-white dark:bg-slate-900 shadow-md dark:shadow-slate-800/50 py-4" : "bg-transparent py-6"
+        isSolid ? "bg-white dark:bg-black shadow-md dark:shadow-black/60 py-4" : "bg-transparent py-6"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
@@ -90,7 +90,7 @@ export default function Navigation() {
 
         {/* Mobile Nav Menu */}
         {isMobileMenuOpen && (
-          <div className="fixed inset-0 bg-white dark:bg-slate-900 z-40 flex flex-col pt-24 px-6 lg:hidden">
+          <div className="fixed inset-0 bg-white dark:bg-black z-40 flex flex-col pt-24 px-6 lg:hidden">
             <nav className="flex flex-col gap-6 text-center">
               {navLinks.map((link) => (
                 <Link

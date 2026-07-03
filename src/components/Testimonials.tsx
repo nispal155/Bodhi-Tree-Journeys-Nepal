@@ -24,20 +24,20 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="w-full py-24 bg-zinc-50 dark:bg-slate-800 border-t border-zinc-100 dark:border-slate-700 transition-colors duration-300">
+    <section className="w-full py-24 bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-800 transition-colors duration-300">
       <div className="container mx-auto px-6 text-center">
         <p className="text-sm font-semibold tracking-widest text-orange-400 mb-4 uppercase text-center">Testimonials</p>
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-16">Stories from the Path</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {testimonials.map((testimonial, i) => (
-            <div key={i} className="group bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-700 text-left relative transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-orange-100 dark:hover:border-orange-800 cursor-pointer">
+            <div key={i} className="group bg-white dark:bg-black p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-zinc-800 text-left relative transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-orange-100 dark:hover:border-orange-800 cursor-pointer">
               <div className="flex gap-1 mb-6 text-orange-400 transition-transform duration-300 group-hover:scale-110 group-hover:origin-left">
                 {[...Array(5)].map((_, j) => <Star key={j} size={18} fill="currentColor" />)}
               </div>
               <p className="text-gray-700 dark:text-gray-300 italic mb-8 leading-relaxed h-32 transition-colors duration-300 group-hover:text-gray-900 dark:group-hover:text-white">"{testimonial.quote}"</p>
               <div className="flex items-center gap-4 mt-auto">
-                <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-200 dark:bg-slate-700 relative transition-transform duration-300 group-hover:scale-110 group-hover:ring-2 group-hover:ring-orange-200 dark:group-hover:ring-orange-700">
+                <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-200 dark:bg-zinc-900 relative transition-transform duration-300 group-hover:scale-110 group-hover:ring-2 group-hover:ring-orange-200 dark:group-hover:ring-orange-700">
                   <Image src={testimonial.avatar} alt={testimonial.name} fill className="object-cover" />
                 </div>
                 <div>

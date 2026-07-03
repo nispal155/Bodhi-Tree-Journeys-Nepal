@@ -10,7 +10,7 @@ export default function AboutUs() {
   ];
 
   return (
-    <section id="about" className="w-full py-24 bg-white dark:bg-slate-900 overflow-hidden transition-colors duration-300">
+    <section id="about" className="w-full py-24 bg-white dark:bg-black overflow-hidden transition-colors duration-300">
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-center gap-16">
           <div className="w-full lg:w-1/2 relative">
@@ -25,7 +25,7 @@ export default function AboutUs() {
             <div className="absolute -bottom-10 -left-10 w-full h-full border-2 border-orange-200 dark:border-orange-800 rounded-2xl z-0 hidden md:block"></div>
 
             {/* Stats Card Overlay */}
-            <div className="absolute -right-4 md:-right-10 top-1/4 bg-white dark:bg-slate-800 p-6 rounded-xl shadow-xl z-20 border border-gray-100 dark:border-slate-700 hidden sm:block">
+            <div className="absolute -right-4 md:-right-10 top-1/4 bg-white dark:bg-zinc-950 p-6 rounded-xl shadow-xl z-20 border border-gray-100 dark:border-zinc-800 hidden sm:block">
               <div className="flex items-center gap-4 mb-4">
                 <div className="text-3xl font-bold text-red-600">15+</div>
                 <div className="text-sm text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider leading-tight">Years<br />Experience</div>
