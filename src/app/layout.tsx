@@ -19,6 +19,8 @@ export const metadata: Metadata = {
 };
 
 import CustomCursor from "@/components/CustomCursor";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
+import ScrollProgress from "@/components/ScrollProgress";
 
 export default function RootLayout({
   children,
@@ -33,7 +35,9 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
+          <ScrollProgress />
           <CustomCursor />
+          <WhatsAppWidget />
           {children}
         </ThemeProvider>
       </body>

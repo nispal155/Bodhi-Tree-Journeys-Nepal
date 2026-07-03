@@ -1,5 +1,29 @@
+"use client";
+
+import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
+import { animate, useInView } from "framer-motion";
+
+function Counter({ from, to, duration = 2, suffix = "" }: { from: number, to: number, duration?: number, suffix?: string }) {
+  const [count, setCount] = useState(from);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  useEffect(() => {
+    if (isInView) {
+      const controls = animate(from, to, {
+        duration,
+        onUpdate(value) {
+          setCount(Math.floor(value));
+        },
+      });
+      return () => controls.stop();
+    }
+  }, [from, to, duration, isInView]);
+
+  return <span ref={ref}>{count}{suffix}</span>;
+}
 
 export default function AboutUs() {
   const highlights = [
@@ -27,15 +51,15 @@ export default function AboutUs() {
             {/* Stats Card Overlay */}
             <div className="absolute -right-4 md:-right-10 top-1/4 bg-white/70 dark:bg-zinc-900/40 backdrop-blur-md p-6 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.7)] z-20 border border-white/50 dark:border-white/10 hidden sm:block">
               <div className="flex items-center gap-4 mb-4">
-                <div className="text-3xl font-bold text-red-600">15+</div>
+                <div className="text-3xl font-bold text-red-600"><Counter from={0} to={7} suffix="+" /></div>
                 <div className="text-sm text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider leading-tight">Years<br />Experience</div>
               </div>
               <div className="flex items-center gap-4 mb-4">
-                <div className="text-3xl font-bold text-red-600">10k+</div>
+                <div className="text-3xl font-bold text-red-600"><Counter from={0} to={5} suffix="k+" /></div>
                 <div className="text-sm text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider leading-tight">Happy<br />Travelers</div>
               </div>
               <div className="flex items-center gap-4">
-                <div className="text-3xl font-bold text-red-600">24</div>
+                <div className="text-3xl font-bold text-red-600"><Counter from={0} to={24} /></div>
                 <div className="text-sm text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider leading-tight">Community<br />Projects</div>
               </div>
             </div>

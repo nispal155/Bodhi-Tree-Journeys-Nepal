@@ -89,10 +89,10 @@ export default function FounderProfile() {
               className="relative w-72 h-72 lg:w-full lg:h-[500px] rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white dark:border-zinc-800 z-10 cursor-pointer"
             >
               <Image 
-                src="/avatar-2.jpg" 
+                src="/founder_pic.jpeg" 
                 alt="Jagadish Adhikari - Founder" 
                 fill 
-                className="object-cover transition-transform duration-700 hover:scale-110"
+                className="object-cover object-top transition-transform duration-700 hover:scale-110"
               />
               
               {/* Floating badge */}
