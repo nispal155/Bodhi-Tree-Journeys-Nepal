@@ -52,7 +52,7 @@ export default function Footer() {
             <ul className="space-y-4 text-red-100">
               <li className="flex gap-3">
                 <span className="text-yellow-300">📍</span>
-                <span>Boudhanath Stupa Marg, Kathmandu 44600, Nepal</span>
+                <span>Boharatar-16, Kathmandu, Nepal</span>
               </li>
               <li className="flex gap-3">
                 <span className="text-yellow-300">📞</span>

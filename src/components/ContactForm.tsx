@@ -35,10 +35,10 @@ export default function ContactForm() {
       <div className="container mx-auto px-6 max-w-6xl">
         {/* Form & Info Card */}
         <div className="bg-white dark:bg-zinc-950 rounded-2xl shadow-xl dark:shadow-black/60 overflow-hidden grid grid-cols-1 lg:grid-cols-5 mb-16">
-          
+
           <div className="bg-red-700 text-white p-8 lg:p-12 lg:col-span-2 flex flex-col justify-center">
             <h3 className="text-2xl font-bold mb-8 text-white">Our Kathmandu Office</h3>
-            
+
             <div className="space-y-8">
               <div className="flex items-start gap-4">
                 <div className="bg-red-800/50 p-3 rounded-xl flex-shrink-0 mt-0.5">
@@ -46,7 +46,7 @@ export default function ContactForm() {
                 </div>
                 <p className="text-red-50 text-base leading-relaxed">
                   <strong className="block text-white mb-1 font-semibold text-lg">Bodhi Tree Journeys Nepal</strong>
-                  Near Boudhanath Stupa, Gate 3<br />
+                  Boharatar-16, Kathmandu, Nepal<br />
                   Kathmandu 44600, Nepal
                 </p>
               </div>
@@ -66,7 +66,7 @@ export default function ContactForm() {
               </div>
             </div>
           </div>
-          
+
           <div className="p-8 lg:p-12 lg:col-span-3">
             {isSuccess ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-10">
