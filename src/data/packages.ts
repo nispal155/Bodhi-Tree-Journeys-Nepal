@@ -21,17 +21,24 @@ export type TourPackage = {
   exclusions: string[];
 };
 
+import { morePackages } from './morePackages';
+
 export const tourPackages: TourPackage[] = [
   {
     slug: "8-nights-standard-nepal-tour",
     title: "8 Nights / 9 Days – Most Popular Standard Nepal Tour",
+    overview: "Our most popular balanced itinerary covering all major highlights without rushed long drives. Exactly what most travelers choose for their first Nepal experience.",
+    image: "/placeholder-tour-1.jpg",
+    tourType: "Standard Tour",
     duration: "8 Nights / 9 Days",
     route: "Kathmandu → Nagarkot → Pokhara → Chitwan → Kathmandu",
-    tourType: "Regular Group / Private Tour",
-    bestSeason: "Oct–Nov, Feb–May (Operates all year)",
-    overview: "Our most popular standard tour covers all major highlights with a balanced pace. No rushed long drives—exactly what most travelers choose for a comprehensive Nepal experience.",
-    highlights: ["Kathmandu Valley UNESCO sites", "Sunset and sunrise at Nagarkot", "Phewa Lake and mountain views in Pokhara", "Wildlife Safari in Chitwan National Park"],
-    image: "/placeholder-tour-1.jpg",
+    bestSeason: "Oct–Nov, Feb–May",
+    highlights: [
+      "Kathmandu Valley UNESCO Heritage Sites (Pashupatinath, Boudhanath, Swayambhunath)",
+      "Sunrise over the Himalayas from Nagarkot",
+      "Serene boating on Phewa Lake and views of Annapurna from Pokhara",
+      "Thrilling jungle safari in Chitwan National Park spotting rhinos and wildlife"
+    ],
     itinerary: [
       {
         day: 1,
@@ -428,5 +435,6 @@ export const tourPackages: TourPackage[] = [
       "Tips & travel insurance",
       "Optional: Everest flight, heli-tour, paragliding, upgrades"
     ]
-  }
+  },
+  ...morePackages
 ];
