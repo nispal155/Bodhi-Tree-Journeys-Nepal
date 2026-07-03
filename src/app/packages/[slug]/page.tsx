@@ -14,8 +14,9 @@ export function generateStaticParams() {
   }));
 }
 
-export default function PackageDetailsPage({ params }: { params: { slug: string } }) {
-  const tour = tourPackages.find((p) => p.slug === params.slug);
+export default async function PackageDetailsPage({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params;
+  const tour = tourPackages.find((p) => p.slug === resolvedParams.slug);
 
   if (!tour) {
     notFound();

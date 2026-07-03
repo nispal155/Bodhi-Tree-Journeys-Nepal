@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function NotFound() {
@@ -14,9 +15,14 @@ export default function NotFound() {
         <h1 className="text-8xl md:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600 mb-2">
           404
         </h1>
-        <div className="text-6xl mb-6 flex justify-center space-x-4">
-          <span>🧘‍♂️</span>
-          <span>☸️</span>
+        <div className="flex justify-center mb-6">
+          <Image 
+            src="/buddha-cursor-transparent.png" 
+            alt="Lord Buddha" 
+            width={120} 
+            height={120} 
+            className="opacity-80"
+          />
         </div>
       </motion.div>
       
