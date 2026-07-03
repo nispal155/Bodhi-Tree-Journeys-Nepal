@@ -43,7 +43,7 @@ export default function Navigation() {
           <div className="flex items-center gap-2">
             <img src="/logoicon.png" alt="Bodhi Tree Journeys Logo" className="w-10 h-10 md:w-12 md:h-12 object-contain drop-shadow-sm" />
             <span className={`text-lg md:text-xl font-bold tracking-tight transition-colors flex items-center gap-1 md:gap-1.5 ${isSolid || isMobileMenuOpen ? "text-gray-900 dark:text-white" : "text-white"}`}>
-              <span className="truncate">Bodhi Tree Journeys <sup className="text-red-600 font-extrabold text-xs md:text-sm">NP</sup></span>
+              <span className="truncate">Bodhi Tree Journeys</span>
               <span className="animate-bounce inline-block text-xl md:text-2xl" style={{ animationDuration: '2s' }}>🇳🇵</span>
             </span>
           </div>
