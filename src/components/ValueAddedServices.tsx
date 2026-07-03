@@ -28,7 +28,7 @@ export default function ValueAddedServices() {
           {addons.map((item, i) => {
             const Icon = item.icon;
             return (
-              <div key={i} className="group bg-white dark:bg-black p-5 rounded-xl shadow-sm border border-gray-100 dark:border-zinc-800 flex flex-col items-center text-center gap-3 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:border-red-100 dark:hover:border-red-800 cursor-pointer">
+              <div key={i} className="group bg-white/70 dark:bg-zinc-900/40 backdrop-blur-md p-5 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.7)] border border-white/50 dark:border-white/10 flex flex-col items-center text-center gap-3 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:border-red-200 dark:hover:border-red-500/50 cursor-pointer">
                 <div className="p-3 bg-red-50 dark:bg-red-950 text-red-500 rounded-full flex-shrink-0 transition-all duration-300 group-hover:bg-red-500 group-hover:text-white group-hover:scale-110 group-hover:shadow-md">
                   <Icon className="w-6 h-6" />
                 </div>

@@ -31,7 +31,7 @@ export default function Testimonials() {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {testimonials.map((testimonial, i) => (
-            <div key={i} className="group bg-white dark:bg-black p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-zinc-800 text-left relative transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-orange-100 dark:hover:border-orange-800 cursor-pointer">
+            <div key={i} className="group bg-white/70 dark:bg-zinc-900/40 backdrop-blur-md p-8 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.7)] border border-white/50 dark:border-white/10 text-left relative transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-orange-200 dark:hover:border-orange-500/50 cursor-pointer">
               <div className="flex gap-1 mb-6 text-orange-400 transition-transform duration-300 group-hover:scale-110 group-hover:origin-left">
                 {[...Array(5)].map((_, j) => <Star key={j} size={18} fill="currentColor" />)}
               </div>

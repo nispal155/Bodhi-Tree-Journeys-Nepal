@@ -82,7 +82,7 @@ export default function TourCategories({ limit, showViewAll = false, hideHeader 
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left mb-16">
           {journeys.map((tour, i) => (
-            <div key={i} className="group bg-white dark:bg-zinc-950 rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] dark:shadow-black/60 border border-gray-100 dark:border-zinc-800 overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(255,100,0,0.15)] hover:border-orange-100 dark:hover:border-orange-800">
+            <div key={i} className="group bg-white/70 dark:bg-zinc-900/40 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.7)] border border-white/50 dark:border-white/10 overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(255,100,0,0.2)] dark:hover:shadow-[0_20px_40px_-15px_rgba(255,100,0,0.4)] hover:border-orange-200 dark:hover:border-orange-500/50">
               <div className="relative h-64 w-full overflow-hidden">
                 <Image
                   src={tour.image}

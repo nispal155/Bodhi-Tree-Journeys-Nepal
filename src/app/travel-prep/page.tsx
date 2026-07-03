@@ -13,7 +13,7 @@ export default function TravelPrepPage() {
           <p className="text-xl text-gray-900 dark:text-gray-300 leading-relaxed mb-10">
             Proper preparation is key to an enjoyable experience in the Himalayas. Here is a general guide to what you should bring.
           </p>
-          <div className="bg-white dark:bg-zinc-950 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-zinc-800 text-left">
+          <div className="bg-white/70 dark:bg-zinc-900/40 backdrop-blur-md p-8 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.7)] border border-white/50 dark:border-white/10 text-left">
             <h3 className="font-bold text-gray-900 dark:text-white text-xl mb-4">Essential Gear</h3>
             <ul className="list-disc pl-6 space-y-4 text-gray-600">
               <li>Sturdy, broken-in trekking boots</li>

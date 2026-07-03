@@ -8,7 +8,7 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { submit } = useWeb3forms({
-    access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE", // Set NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY in your environment variables or replace here
+    access_key: "ef4e677d-faf5-4be7-9a59-e48e7543773a",
     settings: {
       subject: "New Inquiry from Bodhi Tree Journeys Nepal",
     },
@@ -34,7 +34,7 @@ export default function ContactForm() {
     <section id="contact" className="w-full py-24 bg-white dark:bg-black transition-colors duration-300">
       <div className="container mx-auto px-6 max-w-6xl">
         {/* Form & Info Card */}
-        <div className="bg-white dark:bg-zinc-950 rounded-2xl shadow-xl dark:shadow-black/60 overflow-hidden grid grid-cols-1 lg:grid-cols-5 mb-16">
+        <div className="bg-white/70 dark:bg-zinc-900/40 backdrop-blur-md border border-white/50 dark:border-white/10 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.7)] overflow-hidden grid grid-cols-1 lg:grid-cols-5 mb-16">
 
           <div className="bg-red-700 text-white p-8 lg:p-12 lg:col-span-2 flex flex-col justify-center">
             <h3 className="text-2xl font-bold mb-8 text-white">Our Kathmandu Office</h3>

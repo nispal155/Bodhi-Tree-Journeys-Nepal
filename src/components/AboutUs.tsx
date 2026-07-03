@@ -25,7 +25,7 @@ export default function AboutUs() {
             <div className="absolute -bottom-10 -left-10 w-full h-full border-2 border-orange-200 dark:border-orange-800 rounded-2xl z-0 hidden md:block"></div>
 
             {/* Stats Card Overlay */}
-            <div className="absolute -right-4 md:-right-10 top-1/4 bg-white dark:bg-zinc-950 p-6 rounded-xl shadow-xl z-20 border border-gray-100 dark:border-zinc-800 hidden sm:block">
+            <div className="absolute -right-4 md:-right-10 top-1/4 bg-white/70 dark:bg-zinc-900/40 backdrop-blur-md p-6 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.7)] z-20 border border-white/50 dark:border-white/10 hidden sm:block">
               <div className="flex items-center gap-4 mb-4">
                 <div className="text-3xl font-bold text-red-600">15+</div>
                 <div className="text-sm text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider leading-tight">Years<br />Experience</div>

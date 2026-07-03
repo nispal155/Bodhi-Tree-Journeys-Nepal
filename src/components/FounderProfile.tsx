@@ -29,7 +29,7 @@ export default function FounderProfile() {
               His vision is to create travel experiences that are not only deeply moving and adventurous but also strictly committed to uplifting local communities and preserving the natural sacred environments of Nepal.
             </p>
             
-            <div className="bg-white dark:bg-zinc-950 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-zinc-800 flex flex-col sm:flex-row gap-6 sm:items-center justify-between">
+            <div className="bg-white/70 dark:bg-zinc-900/40 backdrop-blur-md p-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.7)] border border-white/50 dark:border-white/10 flex flex-col sm:flex-row gap-6 sm:items-center justify-between">
               <div>
                 <h4 className="font-bold text-gray-900 dark:text-white mb-1">Connect with Jagadish</h4>
                 <p className="text-sm text-gray-500 dark:text-gray-400">Reach out directly for personalized travel advice.</p>
