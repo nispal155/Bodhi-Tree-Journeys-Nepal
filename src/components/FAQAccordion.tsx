@@ -34,24 +34,24 @@ export default function FAQAccordion() {
   };
 
   return (
-    <section id="faq" className="w-full py-24 bg-white">
+    <section id="faq" className="w-full py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
       <div className="container mx-auto px-6 max-w-3xl">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-          <p className="text-lg text-gray-600">Answers to help you prepare for a mindful and culturally respectful journey.</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Frequently Asked Questions</h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300">Answers to help you prepare for a mindful and culturally respectful journey.</p>
         </div>
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
             <div 
               key={index} 
-              className={`border rounded-xl transition-all duration-300 ${openIndex === index ? 'border-red-200 shadow-md bg-white' : 'border-gray-200 bg-gray-50'}`}
+              className={`border rounded-xl transition-all duration-300 ${openIndex === index ? 'border-red-200 dark:border-red-800 shadow-md bg-white dark:bg-slate-800' : 'border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/50'}`}
             >
               <button
                 className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none"
                 onClick={() => toggleOpen(index)}
               >
-                <span className={`font-semibold text-lg ${openIndex === index ? 'text-red-700' : 'text-gray-900'}`}>
+                <span className={`font-semibold text-lg ${openIndex === index ? 'text-red-700 dark:text-red-400' : 'text-gray-900 dark:text-gray-100'}`}>
                   {faq.question}
                 </span>
                 {openIndex === index ? (
@@ -66,7 +66,7 @@ export default function FAQAccordion() {
                   openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
-                <div className="px-6 pb-6 pt-2 text-gray-600 leading-relaxed">
+                <div className="px-6 pb-6 pt-2 text-gray-600 dark:text-gray-300 leading-relaxed">
                   {faq.answer}
                 </div>
               </div>
@@ -74,18 +74,18 @@ export default function FAQAccordion() {
           ))}
         </div>
         
-        <div id="cultural-guidance" className="mt-12 bg-red-50 border border-red-100 rounded-xl p-6 md:p-8 scroll-mt-24">
-          <h3 className="flex items-center gap-2 font-bold text-red-800 mb-4 text-xl">
+        <div id="cultural-guidance" className="mt-12 bg-red-50 dark:bg-red-950/30 border border-red-100 dark:border-red-900 rounded-xl p-6 md:p-8 scroll-mt-24">
+          <h3 className="flex items-center gap-2 font-bold text-red-800 dark:text-red-400 mb-4 text-xl">
             <span className="text-2xl">♥</span> Cultural Respect Guidance
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
-            <ul className="space-y-3 text-red-900/85 list-disc list-outside ml-5">
+            <ul className="space-y-3 text-red-900/85 dark:text-red-200 list-disc list-outside ml-5">
               <li>Always walk clockwise around stupas, prayer wheels, and mani walls.</li>
               <li>Ask permission before photographing local people, monks, or inside temples.</li>
               <li>Do not point the soles of your feet at shrines, people, or religious objects.</li>
               <li>Use both hands when giving or receiving items to show respect.</li>
             </ul>
-            <ul className="space-y-3 text-red-900/85 list-disc list-outside ml-5">
+            <ul className="space-y-3 text-red-900/85 dark:text-red-200 list-disc list-outside ml-5">
               <li>Dress modestly (cover shoulders and knees), especially in sacred areas.</li>
               <li>Remove your shoes and hats before entering monasteries, temples, or homes.</li>
               <li>Do not touch people on the head, as it is considered the most sacred part of the body.</li>

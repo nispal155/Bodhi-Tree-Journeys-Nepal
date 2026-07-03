@@ -31,10 +31,10 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="w-full py-24 bg-white">
+    <section id="contact" className="w-full py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
       <div className="container mx-auto px-6 max-w-6xl">
         {/* Form & Info Card */}
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-5 mb-16">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl dark:shadow-slate-900/50 overflow-hidden grid grid-cols-1 lg:grid-cols-5 mb-16">
           
           <div className="bg-red-700 text-white p-8 lg:p-12 lg:col-span-2 flex flex-col justify-center">
             <h3 className="text-2xl font-bold mb-8 text-white">Our Kathmandu Office</h3>
@@ -70,27 +70,27 @@ export default function ContactForm() {
           <div className="p-8 lg:p-12 lg:col-span-3">
             {isSuccess ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-10">
-                <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4 text-2xl">✓</div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Message Sent!</h3>
-                <p className="text-gray-600">Thank you for reaching out. Our travel experts will get back to you shortly.</p>
+                <div className="w-16 h-16 bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-400 rounded-full flex items-center justify-center mb-4 text-2xl">✓</div>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Message Sent!</h3>
+                <p className="text-gray-600 dark:text-gray-300">Thank you for reaching out. Our travel experts will get back to you shortly.</p>
                 <button onClick={() => setIsSuccess(false)} className="mt-6 text-red-600 font-medium hover:underline">Send another message</button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-                    <input type="text" id="name" name="name" required className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" placeholder="Tenzin Gyatso" />
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
+                    <input type="text" id="name" name="name" required className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" placeholder="Tenzin Gyatso" />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                    <input type="email" id="email" name="email" required className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" placeholder="namaste@example.com" />
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+                    <input type="email" id="email" name="email" required className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" placeholder="namaste@example.com" />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="interest" className="block text-sm font-medium text-gray-700 mb-2">Area of Interest</label>
-                  <select id="interest" name="interest" className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all bg-white">
+                  <label htmlFor="interest" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Area of Interest</label>
+                  <select id="interest" name="interest" className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all">
                     <option value="">Select a category</option>
                     <option value="Pilgrimage">Pilgrimage Tours</option>
                     <option value="Trekking">Himalayan Trekking</option>
@@ -101,8 +101,8 @@ export default function ContactForm() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                  <textarea id="message" name="message" rows={4} required className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all resize-none" placeholder="Tell us about your travel aspirations..."></textarea>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
+                  <textarea id="message" name="message" rows={4} required className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all resize-none" placeholder="Tell us about your travel aspirations..."></textarea>
                 </div>
 
                 <button type="submit" disabled={isSubmitting} className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-lg transition-colors disabled:opacity-70">
@@ -114,7 +114,7 @@ export default function ContactForm() {
         </div>
 
         {/* Map Section */}
-        <div className="w-full h-[350px] lg:h-[450px] rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-white relative">
+        <div className="w-full h-[350px] lg:h-[450px] rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-slate-700 bg-white dark:bg-slate-800 relative">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d252.5531751443488!2d85.29057130926905!3d27.736936356355255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1900482d0fad%3A0x4c15a7edd9515df!2sBodhi%20Tree%20Journeys%20Nepal!5e0!3m2!1sen!2snp!4v1782969256436!5m2!1sen!2snp"
             className="absolute top-0 left-0 w-full h-full border-0"

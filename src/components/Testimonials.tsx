@@ -24,25 +24,25 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="w-full py-24 bg-zinc-50 border-t border-zinc-100">
+    <section className="w-full py-24 bg-zinc-50 dark:bg-slate-800 border-t border-zinc-100 dark:border-slate-700 transition-colors duration-300">
       <div className="container mx-auto px-6 text-center">
         <p className="text-sm font-semibold tracking-widest text-orange-400 mb-4 uppercase text-center">Testimonials</p>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-16">Stories from the Path</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-16">Stories from the Path</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {testimonials.map((testimonial, i) => (
-            <div key={i} className="group bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-left relative transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-orange-100 cursor-pointer">
+            <div key={i} className="group bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-700 text-left relative transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-orange-100 dark:hover:border-orange-800 cursor-pointer">
               <div className="flex gap-1 mb-6 text-orange-400 transition-transform duration-300 group-hover:scale-110 group-hover:origin-left">
                 {[...Array(5)].map((_, j) => <Star key={j} size={18} fill="currentColor" />)}
               </div>
-              <p className="text-gray-700 italic mb-8 leading-relaxed h-32 transition-colors duration-300 group-hover:text-gray-900">"{testimonial.quote}"</p>
+              <p className="text-gray-700 dark:text-gray-300 italic mb-8 leading-relaxed h-32 transition-colors duration-300 group-hover:text-gray-900 dark:group-hover:text-white">"{testimonial.quote}"</p>
               <div className="flex items-center gap-4 mt-auto">
-                <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-200 relative transition-transform duration-300 group-hover:scale-110 group-hover:ring-2 group-hover:ring-orange-200">
+                <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-200 dark:bg-slate-700 relative transition-transform duration-300 group-hover:scale-110 group-hover:ring-2 group-hover:ring-orange-200 dark:group-hover:ring-orange-700">
                   <Image src={testimonial.avatar} alt={testimonial.name} fill className="object-cover" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 transition-colors duration-300 group-hover:text-orange-500">{testimonial.name}</h4>
-                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">{testimonial.country}</p>
+                  <h4 className="font-bold text-gray-900 dark:text-white transition-colors duration-300 group-hover:text-orange-500">{testimonial.name}</h4>
+                  <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{testimonial.country}</p>
                 </div>
               </div>
             </div>

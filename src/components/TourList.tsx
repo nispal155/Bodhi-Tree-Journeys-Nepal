@@ -69,7 +69,7 @@ export default function TourList({ category }: TourListProps) {
     <div className="container mx-auto px-6 pb-24 text-center">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
         {filteredTours.map((tour, i) => (
-          <div key={i} className="group bg-white rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(255,100,0,0.15)] hover:border-orange-100">
+          <div key={i} className="group bg-white dark:bg-slate-800 rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] dark:shadow-slate-900/50 border border-gray-100 dark:border-slate-700 overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(255,100,0,0.15)] hover:border-orange-100 dark:hover:border-orange-800">
             <div className="relative h-64 w-full overflow-hidden">
               <Image
                 src={tour.image}
@@ -83,9 +83,9 @@ export default function TourList({ category }: TourListProps) {
             </div>
             <div className="p-6 flex flex-col flex-grow">
               <h3 className="font-bold text-xl text-red-600 mb-2 transition-colors duration-300 group-hover:text-orange-500">{tour.title}</h3>
-              <p className="text-gray-600 text-sm mb-6 flex-grow">{tour.desc}</p>
+              <p className="text-gray-600 dark:text-gray-400 text-sm mb-6 flex-grow">{tour.desc}</p>
               
-              <div className="flex items-center justify-end pt-4 border-t border-gray-100">
+              <div className="flex items-center justify-end pt-4 border-t border-gray-100 dark:border-slate-700">
                 <Link href="/contact" className="px-5 py-2 bg-orange-500 text-white font-medium rounded-full text-sm transition-all duration-300 group-hover:bg-orange-600 group-hover:shadow-md group-hover:scale-105">
                   Book Now
                 </Link>
@@ -96,7 +96,7 @@ export default function TourList({ category }: TourListProps) {
       </div>
       
       {filteredTours.length === 0 && (
-        <p className="text-gray-500 py-12">More tours coming soon!</p>
+        <p className="text-gray-500 dark:text-gray-400 py-12">More tours coming soon!</p>
       )}
     </div>
   );

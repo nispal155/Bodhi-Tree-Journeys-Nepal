@@ -10,7 +10,7 @@ export default function AboutUs() {
   ];
 
   return (
-    <section id="about" className="w-full py-24 bg-white overflow-hidden">
+    <section id="about" className="w-full py-24 bg-white dark:bg-slate-900 overflow-hidden transition-colors duration-300">
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-center gap-16">
           <div className="w-full lg:w-1/2 relative">
@@ -22,31 +22,31 @@ export default function AboutUs() {
               />
             </div>
             {/* Decorative background element */}
-            <div className="absolute -bottom-10 -left-10 w-full h-full border-2 border-orange-200 rounded-2xl z-0 hidden md:block"></div>
+            <div className="absolute -bottom-10 -left-10 w-full h-full border-2 border-orange-200 dark:border-orange-800 rounded-2xl z-0 hidden md:block"></div>
 
             {/* Stats Card Overlay */}
-            <div className="absolute -right-4 md:-right-10 top-1/4 bg-white p-6 rounded-xl shadow-xl z-20 border border-gray-100 hidden sm:block">
+            <div className="absolute -right-4 md:-right-10 top-1/4 bg-white dark:bg-slate-800 p-6 rounded-xl shadow-xl z-20 border border-gray-100 dark:border-slate-700 hidden sm:block">
               <div className="flex items-center gap-4 mb-4">
                 <div className="text-3xl font-bold text-red-600">15+</div>
-                <div className="text-sm text-gray-500 font-semibold uppercase tracking-wider leading-tight">Years<br />Experience</div>
+                <div className="text-sm text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider leading-tight">Years<br />Experience</div>
               </div>
               <div className="flex items-center gap-4 mb-4">
                 <div className="text-3xl font-bold text-red-600">10k+</div>
-                <div className="text-sm text-gray-500 font-semibold uppercase tracking-wider leading-tight">Happy<br />Travelers</div>
+                <div className="text-sm text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider leading-tight">Happy<br />Travelers</div>
               </div>
               <div className="flex items-center gap-4">
                 <div className="text-3xl font-bold text-red-600">24</div>
-                <div className="text-sm text-gray-500 font-semibold uppercase tracking-wider leading-tight">Community<br />Projects</div>
+                <div className="text-sm text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider leading-tight">Community<br />Projects</div>
               </div>
             </div>
           </div>
 
           <div className="w-full lg:w-1/2">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Experience the authentic spirit of Nepal.</h2>
-            <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Experience the authentic spirit of Nepal.</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
               Bodhi Tree Journeys Nepal was founded with a single purpose: to connect travelers with the profound spirituality, breathtaking landscapes, and vibrant cultures of the Himalayas in a way that respects and uplifts local communities.
             </p>
-            <p className="text-lg text-gray-600 mb-10 leading-relaxed">
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-10 leading-relaxed">
               We go beyond standard tourism. We offer a bridge to ancient traditions, guided by locals who call these mountains home.
             </p>
 
@@ -55,8 +55,8 @@ export default function AboutUs() {
                 <div key={i} className="flex gap-4">
                   <CheckCircle2 className="text-orange-500 flex-shrink-0 mt-1" size={24} />
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-1">{item.title}</h4>
-                    <p className="text-sm text-gray-600">{item.desc}</p>
+                    <h4 className="font-bold text-gray-900 dark:text-white mb-1">{item.title}</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">{item.desc}</p>
                   </div>
                 </div>
               ))}
