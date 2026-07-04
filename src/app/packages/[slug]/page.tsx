@@ -1,7 +1,11 @@
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { Clock, Map, Calendar, Sun, CheckCircle2, XCircle, ArrowLeft } from "lucide-react";
+
+import MapRouteWrapper from "@/components/MapRouteWrapper";
+import WeatherWidget from "@/components/WeatherWidget";
 import { tourPackages } from "@/data/packages";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -14,6 +18,30 @@ export function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const tour = tourPackages.find((p) => p.slug === resolvedParams.slug);
+
+  if (!tour) return {};
+
+  return {
+    title: `${tour.title} | Bodhi Tree Journeys Nepal`,
+    description: tour.overview,
+    openGraph: {
+      title: `${tour.title} | Bodhi Tree Journeys Nepal`,
+      description: tour.overview,
+      images: [
+        {
+          url: tour.image,
+          width: 1200,
+          height: 630,
+          alt: tour.title,
+        },
+      ],
+    },
+  };
+}
+
 export default async function PackageDetailsPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
   const tour = tourPackages.find((p) => p.slug === resolvedParams.slug);
@@ -21,6 +49,22 @@ export default async function PackageDetailsPage({ params }: { params: Promise<{
   if (!tour) {
     notFound();
   }
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    "name": tour.title,
+    "description": tour.overview,
+    "image": `https://bodhitreejourneysnepal.com${tour.image}`,
+    "provider": {
+      "@type": "TravelAgency",
+      "name": "Bodhi Tree Journeys Nepal"
+    },
+    "itinerary": tour.itinerary.map(day => ({
+      "@type": "City",
+      "name": day.title
+    }))
+  };
 
   let backUrl = "/packages";
   let backLabel = "Back to all packages";
@@ -41,6 +85,10 @@ export default async function PackageDetailsPage({ params }: { params: Promise<{
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between font-sans bg-white dark:bg-black transition-colors duration-300">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navigation />
 
       {/* Hero Section */}
@@ -125,6 +173,8 @@ export default async function PackageDetailsPage({ params }: { params: Promise<{
                 {tour.overview}
               </p>
               
+              <WeatherWidget routeString={tour.route} />
+
               <div className="bg-orange-50 dark:bg-orange-900/10 rounded-2xl p-6 border border-orange-100 dark:border-orange-900/30">
                 <h3 className="font-bold text-xl text-gray-900 dark:text-white mb-4">Key Highlights</h3>
                 <ul className="space-y-3">
@@ -136,6 +186,11 @@ export default async function PackageDetailsPage({ params }: { params: Promise<{
                   ))}
                 </ul>
               </div>
+            </section>
+
+            <section>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Route Map</h2>
+              <MapRouteWrapper routeString={tour.route} />
             </section>
 
             <section>

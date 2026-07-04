@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import TourCategories from "@/components/TourCategories";
+import PackageExplorer from "@/components/PackageExplorer";
 
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
@@ -18,8 +18,7 @@ export default function PackagesPage() {
         </div>
       </div>
       <div className="w-full pb-16">
-        <TourCategories hideHeader={true} />
-        
+        <PackageExplorer />
       </div>
       <Footer />
       <FloatingWhatsApp />

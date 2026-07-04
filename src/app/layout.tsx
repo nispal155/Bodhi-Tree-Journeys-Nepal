@@ -14,8 +14,31 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://bodhitreejourneysnepal.com'),
   title: "Bodhi Tree Journeys Nepal",
   description: "Experience the authentic spirit of Nepal. Safe, respectful, and deeply moving cultural and adventure tours.",
+  openGraph: {
+    title: "Bodhi Tree Journeys Nepal",
+    description: "Experience the authentic spirit of Nepal. Safe, respectful, and deeply moving cultural and adventure tours.",
+    url: "https://bodhitreejourneysnepal.com",
+    siteName: "Bodhi Tree Journeys Nepal",
+    images: [
+      {
+        url: "/landing-3d.png",
+        width: 1200,
+        height: 630,
+        alt: "Bodhi Tree Journeys Nepal",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bodhi Tree Journeys Nepal",
+    description: "Experience the authentic spirit of Nepal. Safe, respectful, and deeply moving cultural and adventure tours.",
+    images: ["/landing-3d.png"],
+  },
 };
 
 import CustomCursor from "@/components/CustomCursor";
