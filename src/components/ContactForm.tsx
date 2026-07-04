@@ -1,6 +1,5 @@
 "use client";
 
-import useWeb3forms from "@web3forms/react";
 import { useState, useEffect } from "react";
 
 export default function ContactForm() {
@@ -20,27 +19,32 @@ export default function ContactForm() {
     }
   }, []);
 
-  const { submit } = useWeb3forms({
-    access_key: "bd71c217-841e-4ddf-8681-81584484dca0",
-    settings: {
-      subject: "New Inquiry from Bodhi Tree Journeys Nepal",
-    },
-    onSuccess: (msg, data) => {
-      setIsSuccess(true);
-      setIsSubmitting(false);
-    },
-    onError: (msg, data) => {
-      setIsSubmitting(false);
-    }
-  });
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
-    await submit(data);
-    (e.target as HTMLFormElement).reset();
+    
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      
+      if (response.ok) {
+        setIsSuccess(true);
+        (e.target as HTMLFormElement).reset();
+      } else {
+        console.error("Failed to submit form");
+      }
+    } catch (error) {
+      console.error("An error occurred during submission", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -153,6 +157,9 @@ export default function ContactForm() {
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
                   <textarea id="message" name="message" rows={4} required className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all resize-none" placeholder="Tell us about your travel aspirations..."></textarea>
                 </div>
+                
+                {/* Honeypot field for spam prevention */}
+                <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
 
                 <button type="submit" disabled={isSubmitting} className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-lg transition-colors disabled:opacity-70">
                   {isSubmitting ? "Sending..." : "Submit Inquiry"}

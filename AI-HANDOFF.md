@@ -27,21 +27,29 @@ The project was originally located in a Google Drive synced folder which caused 
 - **Styling:** Tailwind CSS v4
 - **Language:** TypeScript
 - **Icons:** `lucide-react`
-- **Forms:** `@web3forms/react`
+- **Forms:** Secure Web3Forms integration via Next.js API Route (`src/app/api/contact/route.ts`)
+- **Validation:** `zod` schema validation
 - **Directory Structure:** Standard Next.js `src/app` router setup with `src/components` for modular UI components.
-- **Backend/DB:** None (Client-side functionality only per user requirement).
+- **Backend/DB:** Next.js Serverless API Route used purely for form submission proxy.
+
+## Security Configurations Implemented
+1. **API Route Architecture:** Web3Forms submission occurs securely on the server-side via `/api/contact/route.ts` to hide the API key from the client browser.
+2. **Honeypot Protection:** A hidden `botcheck` input field drops automated spam submissions silently without disrupting real users.
+3. **Input Sanitization:** `zod` strictly types, validates, and sanitizes all form inputs before forwarding to the upstream Web3Forms service.
+4. **Next.js Security Headers:** Configured in `next.config.ts`:
+   - `Content-Security-Policy (CSP)` limits scripts, frames, and connections to trusted origins.
+   - `X-Frame-Options` is set to `DENY`.
+   - `X-Content-Type-Options` is set to `nosniff`.
+   - `Referrer-Policy` is `strict-origin-when-cross-origin`.
 
 ## Last Active Task
-- Fully built out all frontend components outlined in the design spec (`demo-travel-theme.pdf`).
-- Imported and composed all components within the main `page.tsx` file.
-- Documented the requirement to move the project out of Google Drive for optimal Next.js compiling.
+- Re-architected Web3Forms contact form to use a secure server-side API handler.
+- Configured mandatory Next.js HTTP Security headers.
+- Implemented honeypots and `zod` input validation.
 
 ## Immediate Next Steps (For the User / Next Agent)
-1. **Move Project Locally:** Move the entire `explore-nepal-travels` directory out of Google Drive and onto a local drive (like the Desktop) to fix compilation speed issues. Run `npm install` again if node_modules act up after the move.
-2. **Asset Integration:** Replace placeholder image paths (e.g., `/hero-placeholder.jpg`, `/placeholder-tour-1.jpg`) with actual high-quality Himalayan assets. Ensure all images are placed in the `/public` directory.
-3. **Web3Forms Configuration:** The `ContactForm.tsx` needs the `YOUR_ACCESS_KEY_HERE` replaced with the actual client's access key for emails to route properly.
-4. **Cross-browser / Device Testing:** Verify responsiveness and interactive hover states (e.g., Tour Category cards, Value-Added Services icons) across mobile, tablet, and desktop viewports.
+1. **Production Environment Variables:** You MUST add `WEB3FORMS_ACCESS_KEY` to your hosting provider's (e.g., Vercel) environment variables for the form to work in production.
+2. **Cross-browser / Device Testing:** Verify responsiveness and interactive hover states.
 
 ## Known Blockers & Open Issues
 - Actual image assets are currently missing and rely on placeholders.
-- The contact form is functional structurally but requires the live Web3Forms access key to finalize delivery testing.
