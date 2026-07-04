@@ -10,6 +10,31 @@ export default function ContactForm() {
   const [captchaString, setCaptchaString] = useState("");
   const [captchaInput, setCaptchaInput] = useState("");
   const [captchaError, setCaptchaError] = useState(false);
+  const [apiErrors, setApiErrors] = useState<Record<string, string[]>>({});
+  const [submitError, setSubmitError] = useState("");
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
+
+  const additionalServicesList = [
+    "Photography & Festival",
+    "Day Sightseeing",
+    "Private Vehicle",
+    "Airport Transfers",
+    "Helicopter Flights",
+    "Permits & Docs",
+    "Visa & Travel Support",
+    "Flight & Hotel Booking",
+    "Guide & Porter",
+    "Gear Rental",
+    "Event Organization"
+  ];
+
+  const toggleService = (service: string) => {
+    setSelectedServices(prev => 
+      prev.includes(service) 
+        ? prev.filter(s => s !== service)
+        : [...prev, service]
+    );
+  };
 
   const generateCaptcha = () => {
     const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
@@ -58,11 +83,19 @@ export default function ContactForm() {
       if (response.ok) {
         setIsSuccess(true);
         (e.target as HTMLFormElement).reset();
+        setApiErrors({});
+        setSubmitError("");
       } else {
-        console.error("Failed to submit form");
+        const result = await response.json();
+        if (result.errors?.fieldErrors) {
+          setApiErrors(result.errors.fieldErrors);
+        } else {
+          setSubmitError(result.message || "Failed to submit form");
+        }
       }
     } catch (error) {
       console.error("An error occurred during submission", error);
+      setSubmitError("An unexpected error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -140,11 +173,13 @@ export default function ContactForm() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Full Name *</label>
-                    <input type="text" id="name" name="name" required className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" placeholder="Tenzin Gyatso" />
+                    <input type="text" id="name" name="name" required pattern="^[a-zA-Z\s\.\-']{2,}$" title="Name must contain only letters and be at least 2 characters long" className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" placeholder="Tenzin Gyatso" />
+                    {apiErrors.name && <p className="text-red-500 text-xs mt-1">{apiErrors.name[0]}</p>}
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email Address *</label>
                     <input type="email" id="email" name="email" required className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" placeholder="contact@example.com" />
+                    {apiErrors.email && <p className="text-red-500 text-xs mt-1">{apiErrors.email[0]}</p>}
                   </div>
                 </div>
 
@@ -172,30 +207,41 @@ export default function ContactForm() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="fromDate" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Travel Dates (From)</label>
-                    <input type="date" id="fromDate" name="fromDate" className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" />
+                    <input type="date" id="fromDate" name="fromDate" min={new Date().toISOString().split('T')[0]} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" />
+                    {apiErrors.fromDate && <p className="text-red-500 text-xs mt-1">{apiErrors.fromDate[0]}</p>}
                   </div>
                   <div>
                     <label htmlFor="toDate" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Travel Dates (To)</label>
-                    <input type="date" id="toDate" name="toDate" className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" />
+                    <input type="date" id="toDate" name="toDate" min={new Date().toISOString().split('T')[0]} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" />
+                    {apiErrors.toDate && <p className="text-red-500 text-xs mt-1">{apiErrors.toDate[0]}</p>}
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="additionalService" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Additional Services</label>
-                  <select id="additionalService" name="additionalService" className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all">
-                    <option value="None">None</option>
-                    <option value="Photography & Festival Tours">Photography & Festival Tours</option>
-                    <option value="Day Sightseeing">Day Sightseeing</option>
-                    <option value="Private Vehicle Service">Private Vehicle Service</option>
-                    <option value="Airport Transfers">Airport Transfers & Meet-and-Greet</option>
-                    <option value="Helicopter & Scenic Flights">Helicopter & Scenic Flights</option>
-                    <option value="Permit & Documentation">Permit & Documentation Assistance</option>
-                    <option value="Visa & Travel Planning">Visa & Travel Planning Support</option>
-                    <option value="Flight & Hotel Booking">Flight & Hotel Booking</option>
-                    <option value="Guide & Porter Arrangement">Licensed Guide & Porter Arrangement</option>
-                    <option value="Trekking Gear Rental">Trekking Gear Rental</option>
-                    <option value="Event Organization">Group & Special Event Organization</option>
-                  </select>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Additional Services (Select multiple)</label>
+                  <input type="hidden" name="additionalService" value={selectedServices.join(", ")} />
+                  <div className="flex flex-wrap gap-2">
+                    {additionalServicesList.map((service) => {
+                      const isSelected = selectedServices.includes(service);
+                      return (
+                        <button
+                          key={service}
+                          type="button"
+                          onClick={() => toggleService(service)}
+                          className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border ${
+                            isSelected 
+                              ? 'bg-red-600 border-red-600 text-white shadow-md' 
+                              : 'bg-white dark:bg-zinc-900 border-gray-200 dark:border-zinc-700 text-gray-700 dark:text-gray-300 hover:border-red-400 hover:text-red-500'
+                          }`}
+                        >
+                          {isSelected && (
+                            <span className="inline-block mr-1.5 font-bold">✓</span>
+                          )}
+                          {service}
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
 
                 <div>
@@ -258,9 +304,10 @@ export default function ContactForm() {
                   {captchaError && <p className="text-red-500 text-sm mt-2 font-medium">Incorrect characters. Please try again.</p>}
                 </div>
 
-                <button type="submit" disabled={isSubmitting} className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-lg transition-colors disabled:opacity-70">
-                  {isSubmitting ? "Sending..." : "Submit Inquiry"}
-                </button>
+                  {submitError && <p className="text-red-500 text-sm font-medium text-center">{submitError}</p>}
+                  <button type="submit" disabled={isSubmitting} className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-lg transition-colors disabled:opacity-70">
+                    {isSubmitting ? "Sending..." : "Submit Inquiry"}
+                  </button>
               </form>
             )}
           </div>
