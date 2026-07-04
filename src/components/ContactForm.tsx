@@ -84,18 +84,16 @@ export default function ContactForm() {
         body: JSON.stringify(data),
       });
 
-      if (!response.ok) {
-        const result = await response.json();
-        if (result.errors?.fieldErrors) {
-          setApiErrors(result.errors.fieldErrors);
+      const validationResult = await response.json();
+
+      if (!response.ok || !validationResult.success) {
+        if (validationResult.errors?.fieldErrors) {
+          setApiErrors(validationResult.errors.fieldErrors);
         } else {
-          setSubmitError(result.message || "Validation failed");
+          setSubmitError(validationResult.message || "Validation failed");
         }
         return;
       }
-
-      // If backend validation passes, it securely returns the access key
-      const validationResult = await response.json();
       
       // Honeypot tripped - silently succeed
       if (!validationResult.access_key && validationResult.message === "Success") {
@@ -224,6 +222,7 @@ export default function ContactForm() {
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Phone Number</label>
                     <input type="tel" id="phone" name="phone" className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" placeholder="+1 234 567 8900" />
+                    {apiErrors.phone && <p className="text-red-500 text-xs mt-1">{apiErrors.phone[0]}</p>}
                   </div>
                   <div>
                     <label htmlFor="interest" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Area of Interest</label>
@@ -238,6 +237,7 @@ export default function ContactForm() {
                       <option value="Wellness">Wellness & Spiritual</option>
                       <option value="Custom">Custom / Luxury</option>
                     </select>
+                    {apiErrors.interest && <p className="text-red-500 text-xs mt-1">{apiErrors.interest[0]}</p>}
                   </div>
                 </div>
 
@@ -284,6 +284,7 @@ export default function ContactForm() {
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
                   <textarea id="message" name="message" rows={4} required className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all resize-none" placeholder="Tell us about your travel aspirations..."></textarea>
+                  {apiErrors.message && <p className="text-red-500 text-xs mt-1">{apiErrors.message[0]}</p>}
                 </div>
                 
                 {/* Honeypot field for spam prevention */}
@@ -342,6 +343,9 @@ export default function ContactForm() {
                 </div>
 
                   {submitError && <p className="text-red-500 text-sm font-medium text-center">{submitError}</p>}
+                  {Object.keys(apiErrors).length > 0 && !submitError && (
+                    <p className="text-red-500 text-sm font-medium text-center">Please fix the validation errors above before submitting.</p>
+                  )}
                   <button type="submit" disabled={isSubmitting} className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-lg transition-colors disabled:opacity-70">
                     {isSubmitting ? "Sending..." : "Submit Inquiry"}
                   </button>

@@ -38,20 +38,22 @@ export async function POST(request: Request) {
     const parsedData = contactSchema.safeParse(body);
     
     if (!parsedData.success) {
+      // Returning 200 instead of 400 to prevent browser console from logging scary red network errors for normal validation failures
       return NextResponse.json(
-        { message: "Invalid input data", errors: parsedData.error.flatten() },
-        { status: 400 }
+        { success: false, message: "Invalid input data", errors: parsedData.error.flatten() },
+        { status: 200 }
       );
     }
     
     // Honeypot check: If botcheck is filled, silently drop the request and return success
     if (parsedData.data.botcheck && parsedData.data.botcheck !== "") {
-      return NextResponse.json({ message: "Success" }, { status: 200 });
+      return NextResponse.json({ success: true, message: "Success" }, { status: 200 });
     }
 
     // Return the access key to the client so it can submit directly to Web3Forms
     // This bypasses Cloudflare's Bot Fight Mode which blocks Next.js servers on the free tier.
     return NextResponse.json({ 
+      success: true,
       message: "Validation passed", 
       access_key: process.env.WEB3FORMS_ACCESS_KEY 
     }, { status: 200 });
