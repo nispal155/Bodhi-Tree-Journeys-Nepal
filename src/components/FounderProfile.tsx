@@ -183,7 +183,7 @@ export default function FounderProfile() {
                 ))}
                 
                 <motion.a 
-                  href="tel:9851005874"
+                  href="tel:9713883831"
                   whileHover={{ scale: 1.2, rotate: -5 }}
                   whileTap={{ scale: 0.9 }}
                   className="w-12 h-12 rounded-full bg-green-50 dark:bg-green-950 text-green-600 dark:text-green-400 flex items-center justify-center shadow-md transition-colors hover:bg-green-600 dark:hover:bg-green-600 hover:text-white"
@@ -204,7 +204,7 @@ export default function FounderProfile() {
                 <div className="bg-green-100 dark:bg-green-900/50 p-2 rounded-full text-green-600 dark:text-green-400 animate-pulse">
                   <Phone size={18} />
                 </div>
-                <span className="font-bold text-lg">+977 9851005874</span>
+                <span className="font-bold text-lg">+977 9713883831</span>
               </motion.div>
             </motion.div>
             

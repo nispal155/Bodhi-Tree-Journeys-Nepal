@@ -46,6 +46,10 @@ The project was originally located in a Google Drive synced folder which caused 
 - Re-architected Web3Forms contact form to use a secure server-side API handler.
 - Configured mandatory Next.js HTTP Security headers.
 - Implemented honeypots and `zod` input validation.
+- Updated all contact information (email to `contact@bodhitreejourneysnepal.com`, phone to `+977 9713883831`).
+- Upgraded the Hero section to include an auto-playing image carousel using `framer-motion`.
+- Implemented a zero-configuration Math Captcha in the contact form to deter bots.
+- Implemented dynamic back button logic in `packages/[slug]/page.tsx` based on the tour type.
 
 ## Immediate Next Steps (For the User / Next Agent)
 1. **Production Environment Variables:** You MUST add `WEB3FORMS_ACCESS_KEY` to your hosting provider's (e.g., Vercel) environment variables for the form to work in production.

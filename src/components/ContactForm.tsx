@@ -7,8 +7,17 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [interest, setInterest] = useState("Package");
   const [customPackage, setCustomPackage] = useState<string | null>(null);
+  const [captchaTokens, setCaptchaTokens] = useState({ num1: 0, num2: 0 });
+  const [captchaInput, setCaptchaInput] = useState("");
+  const [captchaError, setCaptchaError] = useState(false);
 
   useEffect(() => {
+    // Generate captcha
+    setCaptchaTokens({
+      num1: Math.floor(Math.random() * 10) + 1,
+      num2: Math.floor(Math.random() * 10) + 1,
+    });
+    
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
       const pkg = params.get("package");
@@ -21,6 +30,11 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (parseInt(captchaInput) !== captchaTokens.num1 + captchaTokens.num2) {
+      setCaptchaError(true);
+      return;
+    }
+    setCaptchaError(false);
     setIsSubmitting(true);
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
@@ -72,14 +86,14 @@ export default function ContactForm() {
                 <div className="bg-red-800/50 p-3 rounded-xl flex-shrink-0">
                   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-red-200"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
                 </div>
-                <a href="tel:+9779851005874" className="text-red-50 text-base font-medium hover:text-white transition-colors">+977 985-1005874</a>
+                <a href="tel:+9779713883831" className="text-red-50 text-base font-medium hover:text-white transition-colors">+977 971-3883831</a>
               </div>
 
               <div className="flex items-center gap-4">
                 <div className="bg-red-800/50 p-3 rounded-xl flex-shrink-0">
                   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-red-200"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
                 </div>
-                <a href="mailto:namaste@bodhitreejourneys.com" className="text-red-50 text-base font-medium hover:text-white transition-colors flex-wrap break-all">namaste@bodhitreejourneys.com</a>
+                <a href="mailto:contact@bodhitreejourneysnepal.com" className="text-red-50 text-base font-medium hover:text-white transition-colors flex-wrap break-all">contact@bodhitreejourneysnepal.com</a>
               </div>
             </div>
 
@@ -99,7 +113,7 @@ export default function ContactForm() {
                 <a href="https://www.tiktok.com/@bodhetreeejourneys?_r=1&_t=ZS-97gpqgrA03R" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-red-800/80 hover:bg-white hover:text-red-750 transition-colors flex items-center justify-center text-white">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
                 </a>
-                <a href="tel:9851005874" className="w-9 h-9 rounded-full bg-red-800/80 hover:bg-white hover:text-red-750 transition-colors flex items-center justify-center text-white">
+                <a href="tel:9713883831" className="w-9 h-9 rounded-full bg-red-800/80 hover:bg-white hover:text-red-750 transition-colors flex items-center justify-center text-white">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                 </a>
               </div>
@@ -118,28 +132,34 @@ export default function ContactForm() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Full Name *</label>
                     <input type="text" id="name" name="name" required className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" placeholder="Tenzin Gyatso" />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
-                    <input type="email" id="email" name="email" required className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" placeholder="namaste@example.com" />
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email Address *</label>
+                    <input type="email" id="email" name="email" required className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" placeholder="contact@example.com" />
                   </div>
                 </div>
 
-                <div>
-                  <label htmlFor="interest" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Area of Interest</label>
-                  <select id="interest" name="interest" value={interest} onChange={(e) => setInterest(e.target.value)} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all">
-                    {customPackage && (
-                      <option value={customPackage}>Interested in: {customPackage}</option>
-                    )}
-                    <option value="Package">I'm Interested in a Package</option>
-                    <option value="Pilgrimage">Pilgrimage Tours</option>
-                    <option value="Trekking">Himalayan Trekking</option>
-                    <option value="Cultural">Cultural & Heritage</option>
-                    <option value="Wellness">Wellness & Spiritual</option>
-                    <option value="Custom">Custom / Luxury</option>
-                  </select>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" placeholder="+1 234 567 8900" />
+                  </div>
+                  <div>
+                    <label htmlFor="interest" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Area of Interest</label>
+                    <select id="interest" name="interest" value={interest} onChange={(e) => setInterest(e.target.value)} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all">
+                      {customPackage && (
+                        <option value={customPackage}>Interested in: {customPackage}</option>
+                      )}
+                      <option value="Package">I'm Interested in a Package</option>
+                      <option value="Pilgrimage">Pilgrimage Tours</option>
+                      <option value="Trekking">Himalayan Trekking</option>
+                      <option value="Cultural">Cultural & Heritage</option>
+                      <option value="Wellness">Wellness & Spiritual</option>
+                      <option value="Custom">Custom / Luxury</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -160,6 +180,25 @@ export default function ContactForm() {
                 
                 {/* Honeypot field for spam prevention */}
                 <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
+
+                <div className="bg-gray-50 dark:bg-zinc-800/50 p-4 rounded-lg border border-gray-200 dark:border-zinc-700">
+                  <label htmlFor="captcha" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Security Check: What is {captchaTokens.num1} + {captchaTokens.num2}? *
+                  </label>
+                  <input 
+                    type="text" 
+                    id="captcha" 
+                    value={captchaInput} 
+                    onChange={(e) => {
+                      setCaptchaInput(e.target.value);
+                      setCaptchaError(false);
+                    }} 
+                    required 
+                    className={`w-full px-4 py-3 rounded-lg border ${captchaError ? 'border-red-500 focus:ring-red-500' : 'border-gray-200 dark:border-slate-600 focus:ring-red-600'} bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:border-transparent outline-none transition-all`} 
+                    placeholder="Enter the result" 
+                  />
+                  {captchaError && <p className="text-red-500 text-sm mt-2">Incorrect answer. Please try again.</p>}
+                </div>
 
                 <button type="submit" disabled={isSubmitting} className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-lg transition-colors disabled:opacity-70">
                   {isSubmitting ? "Sending..." : "Submit Inquiry"}

@@ -22,6 +22,23 @@ export default async function PackageDetailsPage({ params }: { params: Promise<{
     notFound();
   }
 
+  let backUrl = "/packages";
+  let backLabel = "Back to all packages";
+  
+  if (tour.tourType.includes("Pilgrimage")) {
+    backUrl = "/pilgrimages";
+    backLabel = "Back to Pilgrimages";
+  } else if (tour.tourType.includes("Trek")) {
+    backUrl = "/treks";
+    backLabel = "Back to Treks";
+  } else if (tour.tourType.includes("Cultural")) {
+    backUrl = "/cultural-tours";
+    backLabel = "Back to Cultural Tours";
+  } else if (tour.tourType.includes("Monastery")) {
+    backUrl = "/monastery-retreats";
+    backLabel = "Back to Monastery Retreats";
+  }
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between font-sans bg-white dark:bg-black transition-colors duration-300">
       <Navigation />
@@ -40,9 +57,9 @@ export default async function PackageDetailsPage({ params }: { params: Promise<{
         <div className="absolute inset-0 flex flex-col justify-end pb-16">
           <div className="container mx-auto px-6 max-w-5xl">
             <div className="flex flex-col items-start gap-4 mb-4">
-              <Link href="/packages" className="inline-flex items-center gap-2 text-white hover:text-orange-400 transition-colors font-medium bg-black/30 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+              <Link href={backUrl} className="inline-flex items-center gap-2 text-white hover:text-orange-400 transition-colors font-medium bg-black/30 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
                 <ArrowLeft size={18} />
-                Back to all packages
+                {backLabel}
               </Link>
               <div className="inline-block px-4 py-1.5 bg-orange-500 text-white rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">
                 {tour.tourType.split('/')[0].trim()}

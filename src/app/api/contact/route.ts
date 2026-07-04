@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
-// Define the expected schema for the contact form
 const contactSchema = z.object({
   name: z.string().min(1, "Name is required").max(100),
   email: z.string().email("Invalid email address"),
+  phone: z.string().optional(),
   interest: z.string().min(1),
   fromDate: z.string().optional(),
   toDate: z.string().optional(),

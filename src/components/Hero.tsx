@@ -1,17 +1,48 @@
-import Image from "next/image";
+"use client";
 
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
+const images = [
+  "/landing-3d.png",
+  "/lumbini_temple.png",
+  "/hero-placeholder.jpg",
+  "/placeholder-tour-1.jpg"
+];
 export default function Hero() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 6000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <section id="home" className="w-full min-h-screen bg-slate-900 flex items-center justify-center text-white text-center relative pt-20">
-      {/* Background Image */}
+    <section id="home" className="w-full min-h-screen bg-slate-900 flex items-center justify-center text-white text-center relative pt-20 overflow-hidden">
+      {/* Background Image Carousel */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src="/landing-3d.png"
-          alt="Bodhi Tree Journeys Nepal"
-          fill
-          className="object-cover opacity-60"
-          priority
-        />
+        <AnimatePresence>
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={images[currentIndex]}
+              alt="Bodhi Tree Journeys Nepal"
+              fill
+              className="object-cover opacity-60"
+              priority={currentIndex === 0}
+            />
+          </motion.div>
+        </AnimatePresence>
         <div className="absolute inset-0 bg-black/40" />
       </div>
       

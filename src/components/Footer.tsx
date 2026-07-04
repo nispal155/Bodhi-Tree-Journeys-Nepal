@@ -56,11 +56,11 @@ export default function Footer() {
               </li>
               <li className="flex gap-3">
                 <span className="text-yellow-300">📞</span>
-                <span>+977-9851005874</span>
+                <span>+977-9713883831</span>
               </li>
               <li className="flex gap-3">
                 <span className="text-yellow-300">✉️</span>
-                <span>namaste@bodhitreejourneys.com</span>
+                <span>contact@bodhitreejourneysnepal.com</span>
               </li>
             </ul>
           </div>
