@@ -7,16 +7,23 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [interest, setInterest] = useState("Package");
   const [customPackage, setCustomPackage] = useState<string | null>(null);
-  const [captchaTokens, setCaptchaTokens] = useState({ num1: 0, num2: 0 });
+  const [captchaString, setCaptchaString] = useState("");
   const [captchaInput, setCaptchaInput] = useState("");
   const [captchaError, setCaptchaError] = useState(false);
 
+  const generateCaptcha = () => {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
+    let str = '';
+    for (let i = 0; i < 6; i++) {
+      str += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    setCaptchaString(str);
+    setCaptchaInput("");
+    setCaptchaError(false);
+  };
+
   useEffect(() => {
-    // Generate captcha
-    setCaptchaTokens({
-      num1: Math.floor(Math.random() * 10) + 1,
-      num2: Math.floor(Math.random() * 10) + 1,
-    });
+    generateCaptcha();
     
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
@@ -30,7 +37,7 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (parseInt(captchaInput) !== captchaTokens.num1 + captchaTokens.num2) {
+    if (captchaInput.trim() !== captchaString) {
       setCaptchaError(true);
       return;
     }
@@ -200,9 +207,41 @@ export default function ContactForm() {
                 <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
 
                 <div className="bg-gray-50 dark:bg-zinc-800/50 p-4 rounded-lg border border-gray-200 dark:border-zinc-700">
-                  <label htmlFor="captcha" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Security Check: What is {captchaTokens.num1} + {captchaTokens.num2}? *
+                  <label htmlFor="captcha" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">
+                    Security Check: Please type the characters below *
                   </label>
+                  
+                  <div className="flex flex-wrap items-center gap-4 mb-4">
+                    <div className="relative bg-white dark:bg-zinc-900 border border-gray-300 dark:border-gray-600 px-8 py-3 rounded-lg overflow-hidden select-none flex items-center justify-center min-w-[150px]">
+                      {/* Noise filter background */}
+                      <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}></div>
+                      
+                      {/* Random squiggly lines */}
+                      <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-40 text-gray-500 dark:text-gray-400">
+                        <path d="M 10 20 Q 40 50, 70 10 T 150 30" fill="transparent" stroke="currentColor" strokeWidth="2" />
+                        <path d="M 10 40 Q 60 10, 100 40 T 150 10" fill="transparent" stroke="currentColor" strokeWidth="1.5" />
+                      </svg>
+                      
+                      {/* Captcha Text */}
+                      <div className="flex gap-2 text-2xl font-bold tracking-widest text-gray-800 dark:text-gray-200 relative z-10" style={{ fontFamily: 'monospace' }}>
+                        {captchaString.split('').map((char, i) => {
+                          const rotation = (i % 2 === 0 ? 1 : -1) * (10 + (i * 2));
+                          const yOffset = i % 2 === 0 ? -2 : 2;
+                          return (
+                            <span key={i} className="inline-block drop-shadow-sm" style={{ transform: `rotate(${rotation}deg) translateY(${yOffset}px)` }}>
+                              {char}
+                            </span>
+                          );
+                        })}
+                      </div>
+                    </div>
+                    
+                    <button type="button" onClick={generateCaptcha} className="text-sm text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 hover:underline flex items-center gap-1 font-medium transition-colors">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                      Refresh CAPTCHA
+                    </button>
+                  </div>
+
                   <input 
                     type="text" 
                     id="captcha" 
@@ -212,10 +251,11 @@ export default function ContactForm() {
                       setCaptchaError(false);
                     }} 
                     required 
+                    autoComplete="off"
                     className={`w-full px-4 py-3 rounded-lg border ${captchaError ? 'border-red-500 focus:ring-red-500' : 'border-gray-200 dark:border-slate-600 focus:ring-red-600'} bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:border-transparent outline-none transition-all`} 
-                    placeholder="Enter the result" 
+                    placeholder="Type the characters exactly as shown" 
                   />
-                  {captchaError && <p className="text-red-500 text-sm mt-2">Incorrect answer. Please try again.</p>}
+                  {captchaError && <p className="text-red-500 text-sm mt-2 font-medium">Incorrect characters. Please try again.</p>}
                 </div>
 
                 <button type="submit" disabled={isSubmitting} className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-lg transition-colors disabled:opacity-70">
