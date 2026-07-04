@@ -49,38 +49,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ message: "Success" }, { status: 200 });
     }
 
-    // Prepare payload for Web3Forms
-    const payload = {
-      access_key: process.env.WEB3FORMS_ACCESS_KEY,
-      ...parsedData.data,
-      subject: "New Inquiry from Bodhi Tree Journeys Nepal",
-    };
+    // Return the access key to the client so it can submit directly to Web3Forms
+    // This bypasses Cloudflare's Bot Fight Mode which blocks Next.js servers on the free tier.
+    return NextResponse.json({ 
+      message: "Validation passed", 
+      access_key: process.env.WEB3FORMS_ACCESS_KEY 
+    }, { status: 200 });
 
-    // Forward the request to Web3Forms
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
-
-    const responseText = await response.text();
-    let result;
-    try {
-      result = JSON.parse(responseText);
-    } catch (e) {
-      result = { errorText: responseText };
-    }
-
-    if (response.ok) {
-      return NextResponse.json({ message: "Success", data: result }, { status: 200 });
-    } else {
-      return NextResponse.json({ message: "Failed to submit form", data: result, status: response.status }, { status: 400 });
-    }
   } catch (error: any) {
-    console.error("Form submission error:", error);
+    console.error("Validation error:", error);
     return NextResponse.json({ message: "Internal server error", error: error?.message || String(error) }, { status: 500 });
   }
 }

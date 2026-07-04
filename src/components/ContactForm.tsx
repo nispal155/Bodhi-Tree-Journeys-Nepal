@@ -71,27 +71,64 @@ export default function ContactForm() {
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
     
+    setApiErrors({});
+    setSubmitError("");
+
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify(data),
       });
-      
-      if (response.ok) {
-        setIsSuccess(true);
-        (e.target as HTMLFormElement).reset();
-        setApiErrors({});
-        setSubmitError("");
-      } else {
+
+      if (!response.ok) {
         const result = await response.json();
         if (result.errors?.fieldErrors) {
           setApiErrors(result.errors.fieldErrors);
         } else {
-          setSubmitError(result.message || "Failed to submit form");
+          setSubmitError(result.message || "Validation failed");
         }
+        return;
+      }
+
+      // If backend validation passes, it securely returns the access key
+      const validationResult = await response.json();
+      
+      // Honeypot tripped - silently succeed
+      if (!validationResult.access_key && validationResult.message === "Success") {
+        setIsSuccess(true);
+        (e.target as HTMLFormElement).reset();
+        setSelectedServices([]);
+        return;
+      }
+
+      // Submit directly to Web3Forms from the client to bypass Cloudflare Bot Fight Mode
+      const web3FormsPayload = {
+        ...data,
+        access_key: validationResult.access_key,
+        subject: "New Inquiry from Bodhi Tree Journeys Nepal",
+      };
+
+      const w3fResponse = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(web3FormsPayload),
+      });
+
+      const w3fResult = await w3fResponse.json();
+
+      if (w3fResponse.ok) {
+        setIsSuccess(true);
+        (e.target as HTMLFormElement).reset();
+        setSelectedServices([]);
+      } else {
+        setSubmitError(w3fResult.message || "Failed to submit form to Web3Forms");
       }
     } catch (error) {
       console.error("An error occurred during submission", error);
