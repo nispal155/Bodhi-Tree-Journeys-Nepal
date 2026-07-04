@@ -106,7 +106,7 @@ export default function ContactForm() {
       // Submit directly to Web3Forms from the client to bypass Cloudflare Bot Fight Mode
       const web3FormsPayload = {
         ...data,
-        access_key: validationResult.access_key,
+        access_key: "bd71c217-841e-4ddf-8681-81584484dca0", // Hardcoded Web3Forms public access key
         subject: "New Inquiry from Bodhi Tree Journeys Nepal",
       };
 
