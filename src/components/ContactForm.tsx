@@ -62,7 +62,7 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (captchaInput.trim() !== captchaString) {
+    if (captchaInput.trim().toLowerCase() !== captchaString.toLowerCase()) {
       setCaptchaError(true);
       return;
     }
@@ -173,7 +173,7 @@ export default function ContactForm() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Full Name *</label>
-                    <input type="text" id="name" name="name" required pattern="^[a-zA-Z\s\.\-']{2,}$" title="Name must contain only letters and be at least 2 characters long" className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" placeholder="Tenzin Gyatso" />
+                    <input type="text" id="name" name="name" required className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" placeholder="Tenzin Gyatso" />
                     {apiErrors.name && <p className="text-red-500 text-xs mt-1">{apiErrors.name[0]}</p>}
                   </div>
                   <div>
@@ -207,12 +207,12 @@ export default function ContactForm() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="fromDate" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Travel Dates (From)</label>
-                    <input type="date" id="fromDate" name="fromDate" min={new Date().toISOString().split('T')[0]} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" />
+                    <input type="date" id="fromDate" name="fromDate" className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" />
                     {apiErrors.fromDate && <p className="text-red-500 text-xs mt-1">{apiErrors.fromDate[0]}</p>}
                   </div>
                   <div>
                     <label htmlFor="toDate" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Travel Dates (To)</label>
-                    <input type="date" id="toDate" name="toDate" min={new Date().toISOString().split('T')[0]} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" />
+                    <input type="date" id="toDate" name="toDate" className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" />
                     {apiErrors.toDate && <p className="text-red-500 text-xs mt-1">{apiErrors.toDate[0]}</p>}
                   </div>
                 </div>
