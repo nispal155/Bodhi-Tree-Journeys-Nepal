@@ -54,4 +54,5 @@ AI-HANDOFF.md
 .cody/
 .copilot/
 .devbuddy/
-
+test.js
+test-zod.ts
