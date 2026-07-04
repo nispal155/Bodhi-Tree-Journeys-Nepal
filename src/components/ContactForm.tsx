@@ -152,27 +152,12 @@ export default function ContactForm() {
                       {customPackage && (
                         <option value={customPackage}>Interested in: {customPackage}</option>
                       )}
-                      <optgroup label="Tour Packages">
-                        <option value="Package">I'm Interested in a Package</option>
-                        <option value="Pilgrimage">Pilgrimage Tours</option>
-                        <option value="Trekking">Himalayan Trekking</option>
-                        <option value="Cultural">Cultural & Heritage</option>
-                        <option value="Wellness">Wellness & Spiritual</option>
-                        <option value="Custom">Custom / Luxury</option>
-                      </optgroup>
-                      <optgroup label="Other Services">
-                        <option value="Photography & Festival Tours">Photography & Festival Tours</option>
-                        <option value="Day Sightseeing">Day Sightseeing</option>
-                        <option value="Private Vehicle Service">Private Vehicle Service</option>
-                        <option value="Airport Transfers">Airport Transfers & Meet-and-Greet</option>
-                        <option value="Helicopter & Scenic Flights">Helicopter & Scenic Flights</option>
-                        <option value="Permit & Documentation">Permit & Documentation Assistance</option>
-                        <option value="Visa & Travel Planning">Visa & Travel Planning Support</option>
-                        <option value="Flight & Hotel Booking">Flight & Hotel Booking</option>
-                        <option value="Guide & Porter Arrangement">Licensed Guide & Porter Arrangement</option>
-                        <option value="Trekking Gear Rental">Trekking Gear Rental</option>
-                        <option value="Event Organization">Group & Special Event Organization</option>
-                      </optgroup>
+                      <option value="Package">I'm Interested in a Package</option>
+                      <option value="Pilgrimage">Pilgrimage Tours</option>
+                      <option value="Trekking">Himalayan Trekking</option>
+                      <option value="Cultural">Cultural & Heritage</option>
+                      <option value="Wellness">Wellness & Spiritual</option>
+                      <option value="Custom">Custom / Luxury</option>
                     </select>
                   </div>
                 </div>
@@ -186,6 +171,24 @@ export default function ContactForm() {
                     <label htmlFor="toDate" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Travel Dates (To)</label>
                     <input type="date" id="toDate" name="toDate" className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all" />
                   </div>
+                </div>
+
+                <div>
+                  <label htmlFor="additionalService" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Additional Services</label>
+                  <select id="additionalService" name="additionalService" className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all">
+                    <option value="None">None</option>
+                    <option value="Photography & Festival Tours">Photography & Festival Tours</option>
+                    <option value="Day Sightseeing">Day Sightseeing</option>
+                    <option value="Private Vehicle Service">Private Vehicle Service</option>
+                    <option value="Airport Transfers">Airport Transfers & Meet-and-Greet</option>
+                    <option value="Helicopter & Scenic Flights">Helicopter & Scenic Flights</option>
+                    <option value="Permit & Documentation">Permit & Documentation Assistance</option>
+                    <option value="Visa & Travel Planning">Visa & Travel Planning Support</option>
+                    <option value="Flight & Hotel Booking">Flight & Hotel Booking</option>
+                    <option value="Guide & Porter Arrangement">Licensed Guide & Porter Arrangement</option>
+                    <option value="Trekking Gear Rental">Trekking Gear Rental</option>
+                    <option value="Event Organization">Group & Special Event Organization</option>
+                  </select>
                 </div>
 
                 <div>
