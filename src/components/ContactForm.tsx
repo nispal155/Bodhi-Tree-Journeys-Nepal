@@ -29,8 +29,8 @@ export default function ContactForm() {
   ];
 
   const toggleService = (service: string) => {
-    setSelectedServices(prev => 
-      prev.includes(service) 
+    setSelectedServices(prev =>
+      prev.includes(service)
         ? prev.filter(s => s !== service)
         : [...prev, service]
     );
@@ -49,7 +49,7 @@ export default function ContactForm() {
 
   useEffect(() => {
     generateCaptcha();
-    
+
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
       const pkg = params.get("package");
@@ -70,7 +70,7 @@ export default function ContactForm() {
     setIsSubmitting(true);
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
-    
+
     setApiErrors({});
     setSubmitError("");
 
@@ -94,7 +94,7 @@ export default function ContactForm() {
         }
         return;
       }
-      
+
       // Honeypot tripped - silently succeed
       if (!validationResult.access_key && validationResult.message === "Success") {
         setIsSuccess(true);
@@ -106,7 +106,7 @@ export default function ContactForm() {
       // Submit directly to Web3Forms from the client to bypass Cloudflare Bot Fight Mode
       const web3FormsPayload = {
         ...data,
-        access_key: "bd71c217-841e-4ddf-8681-81584484dca0", // Hardcoded Web3Forms public access key
+        access_key: "ef4e677d-faf5-4be7-9a59-e48e7543773a", // Hardcoded Web3Forms public access key
         subject: "New Inquiry from Bodhi Tree Journeys Nepal",
       };
 
@@ -265,11 +265,10 @@ export default function ContactForm() {
                           key={service}
                           type="button"
                           onClick={() => toggleService(service)}
-                          className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border ${
-                            isSelected 
-                              ? 'bg-red-600 border-red-600 text-white shadow-md' 
-                              : 'bg-white dark:bg-zinc-900 border-gray-200 dark:border-zinc-700 text-gray-700 dark:text-gray-300 hover:border-red-400 hover:text-red-500'
-                          }`}
+                          className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border ${isSelected
+                            ? 'bg-red-600 border-red-600 text-white shadow-md'
+                            : 'bg-white dark:bg-zinc-900 border-gray-200 dark:border-zinc-700 text-gray-700 dark:text-gray-300 hover:border-red-400 hover:text-red-500'
+                            }`}
                         >
                           {isSelected && (
                             <span className="inline-block mr-1.5 font-bold">✓</span>
@@ -286,7 +285,7 @@ export default function ContactForm() {
                   <textarea id="message" name="message" rows={4} required className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all resize-none" placeholder="Tell us about your travel aspirations..."></textarea>
                   {apiErrors.message && <p className="text-red-500 text-xs mt-1">{apiErrors.message[0]}</p>}
                 </div>
-                
+
                 {/* Honeypot field for spam prevention */}
                 <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
 
@@ -294,18 +293,18 @@ export default function ContactForm() {
                   <label htmlFor="captcha" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">
                     Security Check: Please type the characters below *
                   </label>
-                  
+
                   <div className="flex flex-wrap items-center gap-4 mb-4">
                     <div className="relative bg-white dark:bg-zinc-900 border border-gray-300 dark:border-gray-600 px-8 py-3 rounded-lg overflow-hidden select-none flex items-center justify-center min-w-[150px]">
                       {/* Noise filter background */}
                       <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}></div>
-                      
+
                       {/* Random squiggly lines */}
                       <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-40 text-gray-500 dark:text-gray-400">
                         <path d="M 10 20 Q 40 50, 70 10 T 150 30" fill="transparent" stroke="currentColor" strokeWidth="2" />
                         <path d="M 10 40 Q 60 10, 100 40 T 150 10" fill="transparent" stroke="currentColor" strokeWidth="1.5" />
                       </svg>
-                      
+
                       {/* Captcha Text */}
                       <div className="flex gap-2 text-2xl font-bold tracking-widest text-gray-800 dark:text-gray-200 relative z-10" style={{ fontFamily: 'monospace' }}>
                         {captchaString.split('').map((char, i) => {
@@ -319,36 +318,36 @@ export default function ContactForm() {
                         })}
                       </div>
                     </div>
-                    
+
                     <button type="button" onClick={generateCaptcha} className="text-sm text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 hover:underline flex items-center gap-1 font-medium transition-colors">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /><path d="M3 3v5h5" /></svg>
                       Refresh CAPTCHA
                     </button>
                   </div>
 
-                  <input 
-                    type="text" 
-                    id="captcha" 
-                    value={captchaInput} 
+                  <input
+                    type="text"
+                    id="captcha"
+                    value={captchaInput}
                     onChange={(e) => {
                       setCaptchaInput(e.target.value);
                       setCaptchaError(false);
-                    }} 
-                    required 
+                    }}
+                    required
                     autoComplete="off"
-                    className={`w-full px-4 py-3 rounded-lg border ${captchaError ? 'border-red-500 focus:ring-red-500' : 'border-gray-200 dark:border-slate-600 focus:ring-red-600'} bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:border-transparent outline-none transition-all`} 
-                    placeholder="Type the characters exactly as shown" 
+                    className={`w-full px-4 py-3 rounded-lg border ${captchaError ? 'border-red-500 focus:ring-red-500' : 'border-gray-200 dark:border-slate-600 focus:ring-red-600'} bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:border-transparent outline-none transition-all`}
+                    placeholder="Type the characters exactly as shown"
                   />
                   {captchaError && <p className="text-red-500 text-sm mt-2 font-medium">Incorrect characters. Please try again.</p>}
                 </div>
 
-                  {submitError && <p className="text-red-500 text-sm font-medium text-center">{submitError}</p>}
-                  {Object.keys(apiErrors).length > 0 && !submitError && (
-                    <p className="text-red-500 text-sm font-medium text-center">Please fix the validation errors above before submitting.</p>
-                  )}
-                  <button type="submit" disabled={isSubmitting} className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-lg transition-colors disabled:opacity-70">
-                    {isSubmitting ? "Sending..." : "Submit Inquiry"}
-                  </button>
+                {submitError && <p className="text-red-500 text-sm font-medium text-center">{submitError}</p>}
+                {Object.keys(apiErrors).length > 0 && !submitError && (
+                  <p className="text-red-500 text-sm font-medium text-center">Please fix the validation errors above before submitting.</p>
+                )}
+                <button type="submit" disabled={isSubmitting} className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-lg transition-colors disabled:opacity-70">
+                  {isSubmitting ? "Sending..." : "Submit Inquiry"}
+                </button>
               </form>
             )}
           </div>
