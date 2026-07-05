@@ -341,12 +341,68 @@ export default function ContactForm() {
                   {captchaError && <p className="text-red-500 text-sm mt-2 font-medium">Incorrect characters. Please try again.</p>}
                 </div>
 
-                {submitError && <p className="text-red-500 text-sm font-medium text-center">{submitError}</p>}
-                {Object.keys(apiErrors).length > 0 && !submitError && (
-                  <p className="text-red-500 text-sm font-medium text-center">Please fix the validation errors above before submitting.</p>
+                {submitError && (
+                  <div className="bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800/30 text-red-600 dark:text-red-400 p-4 rounded-lg flex items-center gap-3 text-sm font-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <p>{submitError}</p>
+                  </div>
                 )}
-                <button type="submit" disabled={isSubmitting} className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-lg transition-colors disabled:opacity-70">
-                  {isSubmitting ? "Sending..." : "Submit Inquiry"}
+                {Object.keys(apiErrors).length > 0 && !submitError && (
+                  <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-100 dark:border-amber-800/30 text-amber-700 dark:text-amber-400 p-4 rounded-lg flex items-start gap-3 text-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 shrink-0"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    <p><strong>Just a quick check!</strong> It looks like a few details need your attention. Please review the highlighted fields above so we can send your message successfully.</p>
+                  </div>
+                )}
+                <style dangerouslySetInnerHTML={{__html: `
+                  @keyframes buttonGradient {
+                    0% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                    100% { background-position: 0% 50%; }
+                  }
+                  @keyframes flyAway {
+                    0% { transform: translate(0, 0) scale(1); opacity: 1; }
+                    40% { transform: translate(15px, -15px) scale(1.1); opacity: 0; }
+                    41% { transform: translate(-15px, 15px) scale(0.9); opacity: 0; }
+                    100% { transform: translate(0, 0) scale(1); opacity: 1; }
+                  }
+                  .anim-gradient {
+                    background-size: 200% 200%;
+                    animation: buttonGradient 2s ease infinite;
+                  }
+                  .anim-fly {
+                    animation: flyAway 2s ease-in-out infinite;
+                  }
+                `}} />
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting} 
+                  className={`w-full font-bold py-4 rounded-lg transition-all duration-300 relative overflow-hidden flex justify-center items-center group ${
+                    isSubmitting 
+                      ? "bg-gradient-to-r from-orange-500 via-red-500 to-orange-500 anim-gradient shadow-[0_0_20px_rgba(249,115,22,0.6)] text-white scale-[0.98] disabled:opacity-100" 
+                      : "bg-orange-500 hover:bg-orange-600 text-white shadow-lg hover:shadow-orange-500/30 disabled:opacity-70"
+                  }`}
+                >
+                  {isSubmitting ? (
+                    <div className="flex items-center gap-3">
+                      <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      <span className="tracking-widest animate-pulse font-bold">SENDING...</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="anim-fly text-white">
+                        <path d="m22 2-7 20-4-9-9-4Z" />
+                        <path d="M22 2 11 13" />
+                      </svg>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-2">
+                      <span>Submit Inquiry</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1">
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                      </svg>
+                    </div>
+                  )}
                 </button>
               </form>
             )}

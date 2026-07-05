@@ -2,33 +2,49 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 
 const contactSchema = z.object({
-  name: z.string().min(1, "Name is required").max(100).regex(/^[a-zA-Z\s\.\-']{2,}$/, "Name must contain only letters and be at least 2 characters long"),
-  email: z.string().email("Invalid email address"),
+  name: z.string()
+    .min(2, "Your name should be at least 2 characters long.")
+    .max(100, "Please use a shorter name (max 100 characters).")
+    .regex(/^[a-zA-Z\s\.\-']{2,}$/, "Please use only letters, spaces, or hyphens in your name."),
+  
+  email: z.string()
+    .min(1, "We need your email to reply to your inquiry.")
+    .email("Please provide a valid email address (e.g., traveler@example.com)."),
+    
   phone: z.string().optional(),
-  interest: z.string().min(1, "Area of interest is required"),
+  
+  interest: z.string()
+    .min(1, "Please select what you're most interested in."),
+    
   additionalService: z.string().optional(),
+  
   fromDate: z.string().optional().refine((date) => {
     if (!date) return true;
     const selected = new Date(date);
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     return selected >= today;
-  }, { message: "From date cannot be in the past" }),
+  }, { message: "Oops! Your travel start date cannot be in the past." }),
+  
   toDate: z.string().optional().refine((date) => {
     if (!date) return true;
     const selected = new Date(date);
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     return selected >= today;
-  }, { message: "To date cannot be in the past" }),
-  message: z.string().min(10, "Message must be at least 10 characters").max(5000),
+  }, { message: "Oops! Your travel end date cannot be in the past." }),
+  
+  message: z.string()
+    .min(10, "Please provide a bit more detail (at least 10 characters).")
+    .max(5000, "Your message is a bit too long (maximum 5000 characters)."),
+    
   botcheck: z.string().optional(), // honeypot field
 }).refine((data) => {
   if (data.fromDate && data.toDate) {
     return new Date(data.toDate) >= new Date(data.fromDate);
   }
   return true;
-}, { message: "To date must be after From date", path: ["toDate"] });
+}, { message: "Your return date cannot be earlier than your departure date.", path: ["toDate"] });
 
 export async function POST(request: Request) {
   try {
