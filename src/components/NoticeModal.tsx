@@ -61,10 +61,10 @@ export default function NoticeModal() {
               <X size={20} />
             </button>
 
-            {/* Image reference required verbatim */}
+            {/* Image reference */}
             <div className="relative w-full h-48 sm:h-56 bg-gray-50 dark:bg-zinc-800 flex items-center justify-center overflow-hidden border-b border-gray-100 dark:border-zinc-800">
               <Image 
-                src="/Notice.png" 
+                src="/offer.webp" 
                 alt="Important Notice" 
                 fill
                 className="object-cover"
