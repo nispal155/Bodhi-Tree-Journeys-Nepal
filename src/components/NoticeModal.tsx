@@ -30,68 +30,56 @@ export default function NoticeModal() {
   return (
     <AnimatePresence>
       {isVisible && (
-        <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 sm:p-6">
+        <div className="fixed inset-0 z-[110] flex items-center justify-center p-2 sm:p-6">
           {/* Backdrop Overlay */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/70 backdrop-blur-xs"
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm"
             onClick={handleClose}
             aria-hidden="true"
           />
 
-          {/* Modal Card Geometry */}
+          {/* Massive Modal Container */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="relative w-full max-w-lg bg-white dark:bg-zinc-900 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] overflow-hidden flex flex-col z-10"
+            className="relative w-full max-w-4xl h-[85vh] sm:h-[80vh] bg-white dark:bg-zinc-900 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col z-10"
             role="dialog"
             aria-modal="true"
-            aria-labelledby="notice-title"
           >
-            {/* Header / Dismiss Button */}
+            {/* Header / Dismiss Button (Floating over the image for max space) */}
             <button
               onClick={handleClose}
-              className="absolute top-4 right-4 p-2 bg-gray-100 dark:bg-zinc-800 hover:bg-gray-200 dark:hover:bg-zinc-700 rounded-full transition-colors z-20 text-gray-600 dark:text-gray-300"
+              className="absolute top-4 right-4 p-3 bg-white/90 dark:bg-zinc-800/90 hover:bg-white dark:hover:bg-zinc-700 rounded-full transition-colors z-20 shadow-lg text-gray-900 dark:text-white"
               aria-label="Close Notice"
             >
-              <X size={20} />
+              <X size={24} />
             </button>
 
-            {/* Image reference */}
-            <div className="relative w-full h-48 sm:h-56 bg-gray-50 dark:bg-zinc-800 flex items-center justify-center overflow-hidden border-b border-gray-100 dark:border-zinc-800">
-              <Image 
-                src="/offer.webp" 
-                alt="Important Notice" 
-                fill
-                className="object-cover"
-                unoptimized
-              />
+            {/* Massive Image Container taking up almost all space */}
+            <div className="relative w-full h-full bg-gray-100 dark:bg-zinc-800 flex flex-col items-center justify-center p-4">
+              <div className="relative w-full h-full">
+                <Image 
+                  src="/offer.webp" 
+                  alt="Important Special Offer" 
+                  fill
+                  className="object-contain"
+                  unoptimized
+                />
+              </div>
             </div>
 
-            {/* Extracted Styles from offer.webp: Centered alignment, bold red heading */}
-            <div className="p-6 sm:p-8 flex flex-col items-center text-center">
-              <h2 
-                id="notice-title"
-                className="text-3xl sm:text-4xl font-extrabold text-[#C1121F] mb-4 tracking-wide uppercase"
-                style={{ letterSpacing: "0.05em" }}
-              >
-                Special Offer
-              </h2>
-              
-              <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg mb-8 leading-relaxed max-w-sm">
-                Don't miss out on our latest updates and exclusive travel packages. Experience the authentic spirit of Nepal!
-              </p>
-
-              {/* Explicit footer closing action button */}
+            {/* Footer Action Area */}
+            <div className="p-4 bg-white dark:bg-zinc-900 flex justify-center border-t border-gray-100 dark:border-zinc-800 shrink-0">
               <button
                 onClick={handleClose}
-                className="w-full sm:w-auto px-10 py-3.5 bg-[#C1121F] hover:bg-[#a00f1a] text-white font-bold rounded-full transition-colors shadow-lg hover:shadow-xl active:scale-95 uppercase tracking-wide text-sm"
+                className="px-12 py-3 bg-[#C1121F] hover:bg-[#a00f1a] text-white font-bold rounded-full transition-colors shadow-lg hover:shadow-xl active:scale-95 uppercase tracking-wide text-sm sm:text-base"
               >
-                Close Notice
+                Close Offer
               </button>
             </div>
           </motion.div>
