@@ -73,15 +73,6 @@ export default function NoticeModal() {
               </div>
             </div>
 
-            {/* Footer Action Area */}
-            <div className="p-4 bg-white dark:bg-zinc-900 flex justify-center border-t border-gray-100 dark:border-zinc-800 shrink-0">
-              <button
-                onClick={handleClose}
-                className="px-12 py-3 bg-[#C1121F] hover:bg-[#a00f1a] text-white font-bold rounded-full transition-colors shadow-lg hover:shadow-xl active:scale-95 uppercase tracking-wide text-sm sm:text-base"
-              >
-                Close Offer
-              </button>
-            </div>
           </motion.div>
         </div>
       )}
