@@ -56,3 +56,8 @@ AI-HANDOFF.md
 .devbuddy/
 test.js
 test-zod.ts
+
+# deployment artifacts
+out/
+build/
+*.zip

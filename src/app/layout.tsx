@@ -42,7 +42,7 @@ export const metadata: Metadata = {
 };
 
 import CustomCursor from "@/components/CustomCursor";
-import WhatsAppWidget from "@/components/WhatsAppWidget";
+import WeChatWidget from "@/components/WeChatWidget";
 import ScrollProgress from "@/components/ScrollProgress";
 
 export default function RootLayout({
@@ -60,7 +60,7 @@ export default function RootLayout({
         <ThemeProvider>
           <ScrollProgress />
           <CustomCursor />
-          <WhatsAppWidget />
+          <WeChatWidget />
           {children}
         </ThemeProvider>
       </body>
