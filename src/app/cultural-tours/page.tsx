@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import TourList from "@/components/TourList";
 
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
 
 export default function CulturalToursPage() {
   return (
@@ -22,7 +22,7 @@ export default function CulturalToursPage() {
         
       </div>
       <Footer />
-      <FloatingWhatsApp />
+      
     </main>
   );
 }

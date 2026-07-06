@@ -5,7 +5,7 @@ import TourCategories from "@/components/TourCategories";
 import ValueAddedServices from "@/components/ValueAddedServices";
 import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
 
 export default function Home() {
   return (
@@ -16,7 +16,7 @@ export default function Home() {
       <ValueAddedServices />
       <Testimonials />
       <Footer />
-      <FloatingWhatsApp />
+      
     </main>
   );
 }

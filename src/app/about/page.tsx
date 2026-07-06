@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import AboutUs from "@/components/AboutUs";
 import FounderProfile from "@/components/FounderProfile";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
 
 export default function AboutPage() {
   return (
@@ -23,7 +23,7 @@ export default function AboutPage() {
       <FounderProfile />
       
       <Footer />
-      <FloatingWhatsApp />
+      
     </main>
   );
 }

@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import TourList from "@/components/TourList";
 
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
 
 export default function TreksPage() {
   return (
@@ -22,7 +22,7 @@ export default function TreksPage() {
         
       </div>
       <Footer />
-      <FloatingWhatsApp />
+      
     </main>
   );
 }

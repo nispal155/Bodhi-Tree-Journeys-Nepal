@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import FAQAccordion from "@/components/FAQAccordion";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
 
 export default function ContactPage() {
   return (
@@ -22,7 +22,7 @@ export default function ContactPage() {
         <FAQAccordion />
       </div>
       <Footer />
-      <FloatingWhatsApp />
+      
     </main>
   );
 }

@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import TourList from "@/components/TourList";
 
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
 
 export default function PilgrimagesPage() {
   return (
@@ -17,7 +17,7 @@ export default function PilgrimagesPage() {
         
       </div>
       <Footer />
-      <FloatingWhatsApp />
+      
     </main>
   );
 }

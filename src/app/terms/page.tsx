@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
 
 export default function TermsPage() {
   return (
@@ -24,7 +24,7 @@ export default function TermsPage() {
       </div>
 
       <Footer />
-      <FloatingWhatsApp />
+      
     </main>
   );
 }

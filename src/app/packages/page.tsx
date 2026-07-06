@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import PackageExplorer from "@/components/PackageExplorer";
 
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
 
 export default function PackagesPage() {
   return (
@@ -21,7 +21,7 @@ export default function PackagesPage() {
         <PackageExplorer />
       </div>
       <Footer />
-      <FloatingWhatsApp />
+      
     </main>
   );
 }

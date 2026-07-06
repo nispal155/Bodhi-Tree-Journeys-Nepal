@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
 
 export default function PrivacyPolicyPage() {
   return (
@@ -22,7 +22,7 @@ export default function PrivacyPolicyPage() {
       </div>
 
       <Footer />
-      <FloatingWhatsApp />
+      
     </main>
   );
 }

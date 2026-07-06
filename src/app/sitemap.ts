@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next';
 import { tourPackages } from '@/data/packages';
 
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://bodhitreejourneysnepal.com';
 

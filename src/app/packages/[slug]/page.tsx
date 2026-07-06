@@ -9,7 +9,7 @@ import WeatherWidget from "@/components/WeatherWidget";
 import { tourPackages } from "@/data/packages";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
 import ItineraryAccordion from "@/components/ItineraryAccordion";
 
 export function generateStaticParams() {
@@ -247,7 +247,7 @@ export default async function PackageDetailsPage({ params }: { params: Promise<{
       </div>
 
       <Footer />
-      <FloatingWhatsApp />
+      
     </main>
   );
 }

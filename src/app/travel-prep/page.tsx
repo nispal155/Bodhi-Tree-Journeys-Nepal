@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
 
 export default function TravelPrepPage() {
   return (
@@ -28,7 +28,7 @@ export default function TravelPrepPage() {
       </div>
 
       <Footer />
-      <FloatingWhatsApp />
+      
     </main>
   );
 }

@@ -1,7 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ImageGallery from "@/components/ImageGallery";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
 
 export default function GalleryPage() {
   return (
@@ -11,7 +11,7 @@ export default function GalleryPage() {
         <ImageGallery />
       </div>
       <Footer />
-      <FloatingWhatsApp />
+      
     </main>
   );
 }

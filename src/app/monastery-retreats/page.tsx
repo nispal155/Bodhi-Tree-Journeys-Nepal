@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import TourList from "@/components/TourList";
 
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
 
 export default function MonasteryRetreatsPage() {
   return (
@@ -21,7 +21,7 @@ export default function MonasteryRetreatsPage() {
         <TourList category="Wellness" />
       </div>
       <Footer />
-      <FloatingWhatsApp />
+      
     </main>
   );
 }
