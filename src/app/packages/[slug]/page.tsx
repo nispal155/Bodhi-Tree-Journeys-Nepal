@@ -9,7 +9,7 @@ import WeatherWidget from "@/components/WeatherWidget";
 import { tourPackages } from "@/data/packages";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-
+import BackButton from "@/components/BackButton";
 import ItineraryAccordion from "@/components/ItineraryAccordion";
 
 export function generateStaticParams() {
@@ -66,9 +66,6 @@ export default async function PackageDetailsPage({ params }: { params: Promise<{
     }))
   };
 
-  const backUrl = "/packages";
-  const backLabel = "Back to all packages";
-
   return (
     <main className="flex min-h-screen flex-col items-center justify-between font-sans bg-white dark:bg-black transition-colors duration-300">
       <script
@@ -91,10 +88,7 @@ export default async function PackageDetailsPage({ params }: { params: Promise<{
         <div className="absolute inset-0 flex flex-col justify-end pb-16">
           <div className="container mx-auto px-6 max-w-5xl">
             <div className="flex flex-col items-start gap-4 mb-4">
-              <Link href={backUrl} className="inline-flex items-center gap-2 text-white hover:text-orange-400 transition-colors font-medium bg-black/30 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
-                <ArrowLeft size={18} />
-                {backLabel}
-              </Link>
+              <BackButton />
               <div className="inline-block px-4 py-1.5 bg-orange-500 text-white rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">
                 {tour.tourType.split('/')[0].trim()}
               </div>
