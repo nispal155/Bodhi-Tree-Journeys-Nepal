@@ -5,6 +5,7 @@ import { educationalPackages } from "./educationalPackages";
 import { wildlifePackages } from "./wildlifePackages";
 import { luxuryPackages } from "./luxuryPackages";
 import { culturalPackages } from "./culturalPackages";
+import { otherPackages } from "./otherPackages";
 
 export const morePackages: TourPackage[] = [
   ...pilgrimagePackages,
@@ -12,5 +13,6 @@ export const morePackages: TourPackage[] = [
   ...educationalPackages,
   ...wildlifePackages,
   ...luxuryPackages,
-  ...culturalPackages
+  ...culturalPackages,
+  ...otherPackages
 ];

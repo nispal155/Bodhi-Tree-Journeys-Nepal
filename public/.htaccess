@@ -1,0 +1,28 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Force HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Next.js Static Export Routing
+  # 1. If it's an existing directory (Next.js creates folders for trailingSlash: true)
+  # serve the index.html inside it (cPanel does this automatically, but explicitly defining it is safe).
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^(.*[^/])$ /$1/ [L,R=301]
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Security Headers (Migrated from next.config.ts)
+  Header set X-Frame-Options "DENY"
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://api.web3forms.com https://api.open-meteo.com; frame-src 'self' https://www.google.com;"
+</IfModule>
+
+# Disable Directory Browsing
+Options -Indexes
+
+# Setup custom 404 page (Next.js automatically generates 404.html)
+ErrorDocument 404 /404.html
