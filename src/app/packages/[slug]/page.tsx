@@ -66,22 +66,8 @@ export default async function PackageDetailsPage({ params }: { params: Promise<{
     }))
   };
 
-  let backUrl = "/packages";
-  let backLabel = "Back to all packages";
-  
-  if (tour.tourType.includes("Pilgrimage")) {
-    backUrl = "/pilgrimages";
-    backLabel = "Back to Pilgrimages";
-  } else if (tour.tourType.includes("Trek")) {
-    backUrl = "/treks";
-    backLabel = "Back to Treks";
-  } else if (tour.tourType.includes("Cultural")) {
-    backUrl = "/cultural-tours";
-    backLabel = "Back to Cultural Tours";
-  } else if (tour.tourType.includes("Monastery")) {
-    backUrl = "/monastery-retreats";
-    backLabel = "Back to Monastery Retreats";
-  }
+  const backUrl = "/packages";
+  const backLabel = "Back to all packages";
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between font-sans bg-white dark:bg-black transition-colors duration-300">
