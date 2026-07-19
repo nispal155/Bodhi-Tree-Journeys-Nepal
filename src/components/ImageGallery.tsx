@@ -2,20 +2,10 @@ import Image from "next/image";
 import { Heart } from "lucide-react";
 
 export default function ImageGallery() {
-  const images = [
-    { src: "/placeholder-tour-1.jpg", alt: "Gallery Image 1" },
-    { src: "/placeholder-tour-2.jpg", alt: "Gallery Image 2" },
-    { src: "/placeholder-tour-3.jpg", alt: "Gallery Image 3" },
-    { src: "/placeholder-tour-4.jpg", alt: "Gallery Image 4" },
-    { src: "/placeholder-tour-5.jpg", alt: "Gallery Image 5" },
-    { src: "/placeholder-tour-6.jpg", alt: "Gallery Image 6" },
-    { src: "/placeholder-tour-7.jpg", alt: "Gallery Image 7" },
-    { src: "/hero-placeholder.jpg", alt: "Gallery Image 8" },
-    { src: "/placeholder-tour-1.jpg", alt: "Gallery Image 9" },
-    { src: "/placeholder-tour-2.jpg", alt: "Gallery Image 10" },
-    { src: "/placeholder-tour-3.jpg", alt: "Gallery Image 11" },
-    { src: "/placeholder-tour-4.jpg", alt: "Gallery Image 12" },
-  ];
+  const images = Array.from({ length: 50 }, (_, i) => ({
+    src: `/gallery/gallery-${i + 1}.jpg`,
+    alt: `Nepal travel gallery image ${i + 1}`,
+  }));
 
   return (
     <section className="w-full py-24 bg-[#1a1a1a] text-white">

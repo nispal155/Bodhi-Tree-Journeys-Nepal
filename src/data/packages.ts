@@ -28,7 +28,7 @@ export const tourPackages: TourPackage[] = [
     slug: "8-nights-standard-nepal-tour",
     title: "8 Nights / 9 Days – Most Popular Standard Nepal Tour",
     overview: "Our most popular balanced itinerary covering all major highlights without rushed long drives. Exactly what most travelers choose for their first Nepal experience.",
-    image: "/placeholder-tour-1.jpg",
+    image: "/gallery/gallery-36.jpg",
     tourType: "Standard Tour",
     duration: "8 Nights / 9 Days",
     route: "Kathmandu → Nagarkot → Pokhara → Chitwan → Kathmandu",
@@ -170,7 +170,7 @@ export const tourPackages: TourPackage[] = [
     bestSeason: "October–November, February–May (Operates Year-Round)",
     overview: "A classic week-long adventure covering UNESCO heritage sites, stunning Himalayan views, mountain lakes, wildlife safaris, and authentic local culture.",
     highlights: ["Kathmandu Valley UNESCO heritage", "Sarangkot sunrise over the Annapurna range", "Phewa Lake in Pokhara", "Chitwan National Park Safari"],
-    image: "/placeholder-tour-2.jpg",
+    image: "/gallery/gallery-36.jpg",
     itinerary: [
       {
         day: 1,
@@ -295,7 +295,7 @@ export const tourPackages: TourPackage[] = [
     bestSeason: "Oct–Nov, Feb–May (Operates Year-Round)",
     overview: "The most practical and famous standard route offering a perfect mix of culture, heritage, mountain views, spiritual sites, and wildlife without any backtracking.",
     highlights: ["Kathmandu Valley UNESCO sites", "Bandipur heritage hill town", "Pokhara mountain views and Sarangkot sunrise", "Lumbini (birthplace of Buddha)", "Chitwan jungle safari"],
-    image: "/placeholder-tour-4.jpg",
+    image: "/gallery/gallery-18.jpg",
     itinerary: [
       {
         day: 1,
