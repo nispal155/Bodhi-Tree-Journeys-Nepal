@@ -55,9 +55,7 @@ const CATEGORIES = [
 ];
 
 export default function PackageExplorer() {
-  const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({
-    regular: true, // Expand first by default
-  });
+  const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
 
   const toggleCategory = (id: string) => {
     setExpandedCategories(prev => ({
