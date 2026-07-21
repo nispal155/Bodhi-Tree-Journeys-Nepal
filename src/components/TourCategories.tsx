@@ -24,11 +24,12 @@ const CATEGORIES = [
 
 export default function TourCategories({ limit, showViewAll = false, hideHeader = false }: TourCategoriesProps) {
   // Get exactly one package per category
-  const featuredPackages = CATEGORIES.map(category => {
-    return tourPackages.find(pkg => 
+  const featuredPackages = CATEGORIES.flatMap(category => {
+    const foundPkg = tourPackages.find(pkg => 
       category.matchTypes.some(type => pkg.tourType.toLowerCase().includes(type.toLowerCase()))
     );
-  }).filter(Boolean); // Remove any nulls if a category has no packages
+    return foundPkg ? [foundPkg] : [];
+  });
 
   const journeys = limit ? featuredPackages.slice(0, limit) : featuredPackages;
 
