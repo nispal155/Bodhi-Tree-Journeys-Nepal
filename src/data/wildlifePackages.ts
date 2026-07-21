@@ -109,10 +109,11 @@ export const wildlifePackages: TourPackage[] = [
     ]
   },
   {
-    slug: "koshi-chitwan-birds-wetlands",
+slug: "koshi-chitwan-birds-wetlands",
     title: "Koshi & Chitwan – Birds, Wetlands & Big Mammals",
     overview: "Category: Wetlands, Birds & Biodiversity | Best For: Birdwatchers, nature lovers, combining birds + jungle",
     image: "/gallery/gallery-8.jpg",
+    images: ["/gallery/gallery-27.jpg","/gallery/gallery-28.jpg"],
     tourType: "Nature and Wildlife",
     duration: "5 Nights / 6 Days",
     route: "Kathmandu → Koshi Tappu → Chitwan → Kathmandu",
@@ -196,10 +197,11 @@ export const wildlifePackages: TourPackage[] = [
     ]
   },
   {
-    slug: "chitwan-jungle-iconic-wildlife",
+slug: "chitwan-jungle-iconic-wildlife",
     title: "Chitwan Jungle & Iconic Wildlife",
     overview: "Category: Terai Jungle & Iconic Wildlife | Best For: Short trips, families, seeing Nepal’s most famous animals",
     image: "/gallery/gallery-17.jpg",
+    images: ["/gallery/gallery-27.jpg","/gallery/gallery-28.jpg"],
     tourType: "Nature and Wildlife",
     duration: "3 Nights / 4 Days",
     route: "Kathmandu → Chitwan National Park → Kathmandu",

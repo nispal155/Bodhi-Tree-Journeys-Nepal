@@ -11,6 +11,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import BackButton from "@/components/BackButton";
 import ItineraryAccordion from "@/components/ItineraryAccordion";
+import ImageSlider from "@/components/ImageSlider";
 
 export function generateStaticParams() {
   return tourPackages.map((pkg) => ({
@@ -76,13 +77,17 @@ export default async function PackageDetailsPage({ params }: { params: Promise<{
 
       {/* Hero Section */}
       <div className="relative w-full h-[60vh] min-h-[500px]">
-        <Image
-          src={tour.image}
-          alt={tour.title}
-          fill
-          className="object-cover"
-          priority
-        />
+        {tour.images && tour.images.length > 0 ? (
+          <ImageSlider images={tour.images} alt={tour.title} />
+        ) : (
+          <Image
+            src={tour.image}
+            alt={tour.title}
+            fill
+            className="object-cover"
+            priority
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />
         
         <div className="absolute inset-0 flex flex-col justify-end pb-16">

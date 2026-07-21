@@ -1,11 +1,24 @@
 import Image from "next/image";
 import { Heart } from "lucide-react";
+import { tourPackages } from "@/data/packages";
 
 export default function ImageGallery() {
-  const images = Array.from({ length: 50 }, (_, i) => ({
-    src: `/gallery/gallery-${i + 1}.jpg`,
-    alt: `Nepal travel gallery image ${i + 1}`,
-  }));
+  const allUsedImages = new Set<string>();
+  tourPackages.forEach(pkg => {
+    if (pkg.image) allUsedImages.add(pkg.image);
+    if (pkg.images) pkg.images.forEach(img => allUsedImages.add(img));
+  });
+
+  const images = [];
+  for (let i = 1; i <= 55; i++) {
+    const src = `/gallery/gallery-${i}.jpg`;
+    if (!allUsedImages.has(src)) {
+      images.push({
+        src,
+        alt: `Nepal travel gallery image ${i}`,
+      });
+    }
+  }
 
   return (
     <section className="w-full py-24 bg-[#1a1a1a] text-white">

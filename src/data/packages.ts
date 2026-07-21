@@ -16,6 +16,7 @@ export type TourPackage = {
   overview: string;
   highlights: string[];
   image: string;
+  images?: string[];
   itinerary: ItineraryDay[];
   inclusions: string[];
   exclusions: string[];
@@ -29,6 +30,7 @@ export const tourPackages: TourPackage[] = [
     title: "8 Nights / 9 Days – Most Popular Standard Nepal Tour",
     overview: "Our most popular balanced itinerary covering all major highlights without rushed long drives. Exactly what most travelers choose for their first Nepal experience.",
     image: "/gallery/gallery-36.jpg",
+    images: ["/gallery/gallery-21.jpg","/gallery/gallery-25.jpg","/gallery/gallery-27.jpg","/gallery/gallery-28.jpg"],
     tourType: "Standard Tour",
     duration: "8 Nights / 9 Days",
     route: "Kathmandu → Nagarkot → Pokhara → Chitwan → Kathmandu",
@@ -162,7 +164,7 @@ export const tourPackages: TourPackage[] = [
     ]
   },
   {
-    slug: "7-nights-classic-nepal-tour",
+slug: "7-nights-classic-nepal-tour",
     title: "7 Nights 8 Days Classic Nepal Tour",
     duration: "7 Nights / 8 Days",
     route: "Kathmandu → Pokhara → Chitwan → Kathmandu",
@@ -171,6 +173,7 @@ export const tourPackages: TourPackage[] = [
     overview: "A classic week-long adventure covering UNESCO heritage sites, stunning Himalayan views, mountain lakes, wildlife safaris, and authentic local culture.",
     highlights: ["Kathmandu Valley UNESCO heritage", "Sarangkot sunrise over the Annapurna range", "Phewa Lake in Pokhara", "Chitwan National Park Safari"],
     image: "/gallery/gallery-36.jpg",
+    images: ["/gallery/gallery-27.jpg","/gallery/gallery-28.jpg"],
     itinerary: [
       {
         day: 1,
@@ -287,7 +290,7 @@ export const tourPackages: TourPackage[] = [
     ]
   },
   {
-    slug: "10-nights-complete-nepal-tour",
+slug: "10-nights-complete-nepal-tour",
     title: "10 Nights / 11 Days – Complete Nepal Tour",
     duration: "10 Nights / 11 Days",
     route: "Kathmandu → Bandipur → Pokhara → Lumbini → Chitwan → Kathmandu",
@@ -296,6 +299,7 @@ export const tourPackages: TourPackage[] = [
     overview: "The most practical and famous standard route offering a perfect mix of culture, heritage, mountain views, spiritual sites, and wildlife without any backtracking.",
     highlights: ["Kathmandu Valley UNESCO sites", "Bandipur heritage hill town", "Pokhara mountain views and Sarangkot sunrise", "Lumbini (birthplace of Buddha)", "Chitwan jungle safari"],
     image: "/gallery/gallery-18.jpg",
+    images: ["/gallery/gallery-9.jpg","/gallery/gallery-13.jpg","/gallery/gallery-14.jpg","/gallery/gallery-33.jpg","/gallery/gallery-34.jpg","/gallery/gallery-27.jpg","/gallery/gallery-28.jpg"],
     itinerary: [
       {
         day: 1,

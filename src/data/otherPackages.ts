@@ -57,6 +57,7 @@ export const otherPackages: TourPackage[] = [
     title: "Everest Base Camp Heli Tour with Landing",
     overview: "Land at the Top of the World. Perfect for VIPs, senior travellers, post-trek extension, proposals/anniversaries.",
     image: "/gallery/gallery-9.jpg",
+    images: ["/gallery/gallery-21.jpg","/gallery/gallery-25.jpg"],
     tourType: "Scenic Flight",
     duration: "Half Day",
     route: "Kathmandu/Lukla → EBC/Kala Patthar → Return",
@@ -135,10 +136,11 @@ export const otherPackages: TourPackage[] = [
     ]
   },
   {
-    slug: "chitwan-jungle-day-safari",
+slug: "chitwan-jungle-day-safari",
     title: "Chitwan Jungle Day Safari",
     overview: "Wildlife in One Day. All-inclusive, fully guided, easy accessibility.",
     image: "/gallery/gallery-12.jpg",
+    images: ["/gallery/gallery-27.jpg","/gallery/gallery-28.jpg"],
     tourType: "Day Tour",
     duration: "1 Day",
     route: "Chitwan",

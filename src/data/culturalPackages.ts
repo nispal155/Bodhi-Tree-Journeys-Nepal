@@ -114,6 +114,7 @@ export const culturalPackages: TourPackage[] = [
     title: "Kathmandu Valley World Heritage Highlights",
     overview: "Duration: 4 Nights / 5 Days | Pace: Gentle | Route: Kathmandu → Patan → Bhaktapur → Kathmandu",
     image: "/gallery/gallery-42.jpg",
+    images: ["/gallery/gallery-21.jpg","/gallery/gallery-25.jpg"],
     tourType: "Cultural Tour",
     duration: "4 Nights / 5 Days",
     route: "Kathmandu → Patan → Bhaktapur → Kathmandu",
