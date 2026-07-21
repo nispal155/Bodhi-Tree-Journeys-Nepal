@@ -80,7 +80,7 @@ export default function Navigation() {
           <ThemeToggle />
           <button
             className={`p-2 rounded-md ${
-              isScrolled || isMobileMenuOpen ? "text-gray-900 dark:text-white" : "text-white"
+              isSolid || isMobileMenuOpen ? "text-gray-900 dark:text-white" : "text-white"
             }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
