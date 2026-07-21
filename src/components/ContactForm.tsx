@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from "react";
 import { z } from "zod";
 import HCaptcha from '@hcaptcha/react-hcaptcha';
-import { tourPackages } from "@/data/packages";
 
 const contactSchema = z.object({
   name: z.string()
@@ -251,13 +250,15 @@ export default function ContactForm() {
                       {customPackage && (
                         <option value={customPackage}>Interested in: {customPackage}</option>
                       )}
-                      {tourPackages.map(pkg => (
-                        <option key={pkg.slug} value={pkg.title}>
-                          {pkg.title}
-                        </option>
-                      ))}
-                      <option value="Custom">Custom / Luxury Itinerary</option>
-                      <option value="Other">Other Inquiry</option>
+                      <option value="Regular Tour Program">🇳🇵REGULAR TOUR PROGRAM</option>
+                      <option value="Wellness and Spiritual Tours">🕉 Wellness and Spiritual Tours</option>
+                      <option value="Pilgrimage Tours">☯️ Pilgrimage Tours</option>
+                      <option value="Himalayan Trekking">🏔Himalayan Trekking</option>
+                      <option value="Educational Tour Programs">📜Educational Tour Programs</option>
+                      <option value="Nature and Wildlife">🎒Nature and Wildlife</option>
+                      <option value="Custom Private & Luxury Journeys">🏨 Custom Private & Luxury Journeys</option>
+                      <option value="Cultural & Heritage Journeys">🌋Cultural & Heritage Journeys</option>
+                      <option value="Additional Offerings">♾️ Additional Offerings</option>
                     </select>
                     {apiErrors.interest && <p className="text-red-500 text-xs mt-1">{apiErrors.interest[0]}</p>}
                   </div>
