@@ -88,10 +88,10 @@ export default async function PackageDetailsPage({ params }: { params: Promise<{
             priority
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20 pointer-events-none z-10" />
         
-        <div className="absolute inset-0 flex flex-col justify-end pb-16">
-          <div className="container mx-auto px-6 max-w-5xl">
+        <div className="absolute inset-0 flex flex-col justify-end pb-16 z-20 pointer-events-none">
+          <div className="container mx-auto px-6 max-w-5xl pointer-events-auto">
             <div className="flex flex-col items-start gap-4 mb-4">
               <BackButton />
               <div className="inline-block px-4 py-1.5 bg-orange-500 text-white rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">
