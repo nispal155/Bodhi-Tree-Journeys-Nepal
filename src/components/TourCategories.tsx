@@ -10,8 +10,27 @@ interface TourCategoriesProps {
   hideHeader?: boolean;
 }
 
+const CATEGORIES = [
+  { matchTypes: ["Standard Tour", "Regular Group / Private Custom"] },
+  { matchTypes: ["Wellness and Spiritual Tour"] },
+  { matchTypes: ["Pilgrimage Tour", "Monastery Retreat"] },
+  { matchTypes: ["Trekking"] },
+  { matchTypes: ["Educational Tour"] },
+  { matchTypes: ["Nature and Wildlife"] },
+  { matchTypes: ["Luxury Journey", "Custom Journey"] },
+  { matchTypes: ["Cultural Tour"] },
+  { matchTypes: ["Scenic Flight", "Day Tour", "Photography Tour", "Festival Tour"] }
+];
+
 export default function TourCategories({ limit, showViewAll = false, hideHeader = false }: TourCategoriesProps) {
-  const journeys = limit ? tourPackages.slice(0, limit) : tourPackages;
+  // Get exactly one package per category
+  const featuredPackages = CATEGORIES.map(category => {
+    return tourPackages.find(pkg => 
+      category.matchTypes.some(type => pkg.tourType.toLowerCase().includes(type.toLowerCase()))
+    );
+  }).filter(Boolean); // Remove any nulls if a category has no packages
+
+  const journeys = limit ? featuredPackages.slice(0, limit) : featuredPackages;
 
   return (
     <section id="packages" className="w-full py-24 bg-white dark:bg-black transition-colors duration-300">
