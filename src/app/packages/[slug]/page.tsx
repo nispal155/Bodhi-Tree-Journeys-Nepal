@@ -84,7 +84,7 @@ export default async function PackageDetailsPage({ params }: { params: Promise<{
             src={tour.image}
             alt={tour.title}
             fill
-            className="object-cover"
+            className="object-contain bg-black"
             priority
           />
         )}

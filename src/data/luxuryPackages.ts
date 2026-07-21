@@ -210,7 +210,7 @@ export const luxuryPackages: TourPackage[] = [
     title: "Premium Wilderness & Himalayan Comfort",
     overview: "Duration: 6 Nights / 7 Days | Category: Premium Wilderness & Himalayan Luxury | Key Luxury: Private jungle safaris, luxury tented camps, mountain resorts, scenic mountain flight",
     image: "/gallery/gallery-41.jpg",
-    images: ["/gallery/gallery-27.jpg","/gallery/gallery-28.jpg"],
+    images: ["/gallery/gallery-27.jpg","/gallery/gallery-28.jpg","/gallery/gallery-11.jpg"],
     tourType: "Luxury Journey",
     duration: "6 Nights / 7 Days",
     route: "Kathmandu → Chitwan Luxury Lodge → Pokhara → Nagarkot",

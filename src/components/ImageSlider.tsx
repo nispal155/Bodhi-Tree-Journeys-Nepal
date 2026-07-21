@@ -35,7 +35,7 @@ export default function ImageSlider({ images, alt, className = "" }: ImageSlider
             src={src}
             alt={`${alt} - Image ${idx + 1}`}
             fill
-            className="object-cover"
+            className="object-contain bg-black/5"
             priority={idx === 0}
           />
         </div>

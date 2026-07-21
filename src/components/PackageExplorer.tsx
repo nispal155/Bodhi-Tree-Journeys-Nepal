@@ -99,15 +99,15 @@ export default function PackageExplorer() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {categoryPackages.map((pkg) => (
                       <Link href={`/packages/${pkg.slug}`} key={pkg.slug} className="group flex flex-col bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-zinc-800 h-full transform hover:-translate-y-1">
-                        <div className="relative h-56 w-full overflow-hidden group-hover:scale-105 transition-transform duration-700">
+                        <div className="relative h-56 w-full overflow-hidden group-hover:scale-105 transition-transform duration-700 bg-black/5 dark:bg-black/20">
                           {pkg.images && pkg.images.length > 0 ? (
-                            <ImageSlider images={pkg.images} alt={pkg.title} className="object-cover" />
+                            <ImageSlider images={pkg.images} alt={pkg.title} className="object-contain" />
                           ) : (
                             <Image
                               src={pkg.image}
                               alt={pkg.title}
                               fill
-                              className="object-cover"
+                              className="object-contain"
                             />
                           )}
                           <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-orange-600 shadow-sm z-30">
