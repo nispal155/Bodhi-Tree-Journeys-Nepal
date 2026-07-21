@@ -19,7 +19,7 @@ export default function ValueAddedServices() {
   return (
     <section id="services" className="w-full py-24 bg-gray-50 dark:bg-zinc-950 transition-colors duration-300">
       <div className="container mx-auto px-6 text-center">
-        <h2 className="text-4xl font-bold text-red-600 mb-6">Other Services</h2>
+        <h2 className="text-4xl font-bold text-red-600 mb-6">Additional Offerings</h2>
         <p className="text-gray-600 dark:text-gray-300 mb-12 text-lg max-w-2xl mx-auto">
           Comprehensive travel support and specialized services to make your journey through Nepal seamless and unforgettable.
         </p>

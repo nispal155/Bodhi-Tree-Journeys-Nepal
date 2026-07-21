@@ -50,7 +50,7 @@ const CATEGORIES = [
   },
   {
     id: "other",
-    title: "♾️ Other Services",
+    title: "♾️ Additional Offerings",
     matchTypes: ["Scenic Flight", "Day Tour", "Photography Tour", "Festival Tour"]
   }
 ];
