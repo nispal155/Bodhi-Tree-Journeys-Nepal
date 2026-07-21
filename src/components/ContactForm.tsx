@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { z } from "zod";
 import HCaptcha from '@hcaptcha/react-hcaptcha';
+import { tourPackages } from "@/data/packages";
 
 const contactSchema = z.object({
   name: z.string()
@@ -45,7 +46,7 @@ const contactSchema = z.object({
 export default function ContactForm() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [interest, setInterest] = useState("Package");
+  const [interest, setInterest] = useState("");
   const [customPackage, setCustomPackage] = useState<string | null>(null);
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [captchaError, setCaptchaError] = useState(false);
@@ -244,17 +245,19 @@ export default function ContactForm() {
                     {apiErrors.phone && <p className="text-red-500 text-xs mt-1">{apiErrors.phone[0]}</p>}
                   </div>
                   <div>
-                    <label htmlFor="interest" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Area of Interest</label>
-                    <select id="interest" name="interest" value={interest} onChange={(e) => setInterest(e.target.value)} className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all">
+                    <label htmlFor="interest" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Area of Interest *</label>
+                    <select id="interest" name="interest" value={interest} onChange={(e) => setInterest(e.target.value)} required className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-zinc-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-red-600 focus:border-transparent outline-none transition-all">
+                      <option value="" disabled>Select a Tour Package</option>
                       {customPackage && (
                         <option value={customPackage}>Interested in: {customPackage}</option>
                       )}
-                      <option value="Package">I'm Interested in a Package</option>
-                      <option value="Pilgrimage">Pilgrimage Tours</option>
-                      <option value="Trekking">Himalayan Trekking</option>
-                      <option value="Cultural">Cultural & Heritage</option>
-                      <option value="Wellness">Wellness & Spiritual</option>
-                      <option value="Custom">Custom / Luxury</option>
+                      {tourPackages.map(pkg => (
+                        <option key={pkg.slug} value={pkg.title}>
+                          {pkg.title}
+                        </option>
+                      ))}
+                      <option value="Custom">Custom / Luxury Itinerary</option>
+                      <option value="Other">Other Inquiry</option>
                     </select>
                     {apiErrors.interest && <p className="text-red-500 text-xs mt-1">{apiErrors.interest[0]}</p>}
                   </div>
