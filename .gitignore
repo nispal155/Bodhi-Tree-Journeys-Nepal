@@ -63,4 +63,9 @@ build/
 *.zip
 Picture for Website /
 AI-HANDOFF.md
-*.build 
+*.build
+
+# specific files to ignore
+AGENTS.md
+CLAUDE.md
+demo-travel-theme.pdf

@@ -125,7 +125,7 @@ export default function ContactForm() {
       const web3FormsPayload = {
         ...data,
         "h-captcha-response": captchaToken,
-        access_key: "bd71c217-841e-4ddf-8681-81584484dca0",
+        access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "",
         subject: "New Inquiry from Bodhi Tree Journeys Nepal",
       };
 
@@ -317,7 +317,7 @@ export default function ContactForm() {
                     Security Check *
                   </label>
                   <HCaptcha
-                    sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                    sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY || ""}
                     onVerify={(token) => {
                       setCaptchaToken(token);
                       setCaptchaError(false);

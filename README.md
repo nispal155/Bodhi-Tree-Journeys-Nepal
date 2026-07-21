@@ -19,15 +19,14 @@ Developed by **Nispal Bhattarai** (Owner of Astra Technology Horizon).
 - **Important Notice Modal:** A massive, responsive, image-centric promotional flyer overlay that triggers on page load (with persistent `localStorage` dismissal tracking).
 
 ### 💬 Instant Communication
-- **WeChat Integration:** A custom floating WeChat widget featuring a high-quality popup QR code scanner, tailored specifically for Chinese client engagement (WeChat ID: Lingyunnepal).
+- **WhatsApp Integration:** A custom floating WhatsApp widget for instant, direct client engagement and support on mobile and desktop.
 
 ### 🛡️ Secure & Serverless Architecture (cPanel Optimized)
 - **100% Static Export (`output: 'export'`):** The architecture has been completely migrated to support Node.js-free environments, making it fully compatible with shared cPanel hosting.
 - **Client-Side Form Validation:** Secure Web3Forms integration with client-side **Zod** schema validation and built-in honeypots to prevent spam without relying on backend API routes.
 - **Apache Security Headers (`.htaccess`):** Implemented strict routing, HTTPS forced redirects, and advanced Content Security Policies out of the box for Apache web servers.
 
-### 🚀 Bulletproof Deployment System
-- **WAF Bypass Installer (`installer.php`):** Created a custom PHP drop-and-extract script with a base64 encoded payload (`payload.txt`). This securely bypasses overly aggressive cPanel antivirus scanners (like `Sanesecurity.Foxhole.JS_Zip_11.UNOFFICIAL FOUND`) that block Next.js compiled `.js` files within `.zip` archives.
+
 
 ---
 
