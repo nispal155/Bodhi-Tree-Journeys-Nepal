@@ -210,6 +210,16 @@ export default function ContactForm() {
                 <a href="tel:9713883831" className="w-9 h-9 rounded-full bg-red-800/80 hover:bg-white hover:text-red-750 transition-colors flex items-center justify-center text-white">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                 </a>
+                <button 
+                  type="button"
+                  onClick={() => alert('WeChat ID: Lingyunnepal\n\nYou can also click the floating WeChat icon at the bottom right corner of the screen to scan our QR code!')}
+                  className="w-9 h-9 rounded-full bg-red-800/80 hover:bg-white hover:text-red-750 transition-colors flex items-center justify-center text-white"
+                  title="WeChat ID: Lingyunnepal"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024" fill="currentColor">
+                    <path d="M682.667 384c-34.133 0-64 8.533-89.6 17.067a360.533 360.533 0 00-209.067-187.734c-12.8-4.266-29.867-8.533-46.933-8.533-149.334 0-277.334 115.2-277.334 256s119.467 243.2 268.8 256h25.6l-29.866 59.733a18.773 18.773 0 0021.333 25.6l81.066-29.866h4.267a312.32 312.32 0 0055.467 4.266 211.2 211.2 0 00-4.267-34.133c0-149.333 132.267-273.067 298.667-273.067h8.533v-17.066c-17.066-38.4-55.466-68.267-106.666-68.267zM320 384a34.133 34.133 0 110-68.267 34.133 34.133 0 010 68.267zm213.333 0a34.133 34.133 0 110-68.267 34.133 34.133 0 010 68.267z"/><path d="M938.667 554.667c0-115.2-115.2-213.334-256-213.334s-256 98.134-256 213.334 115.2 213.333 256 213.333a277.333 277.333 0 0046.933-4.267l64 25.6a18.773 18.773 0 0021.334-21.333l-21.334-46.933a233.813 233.813 0 00145.067-166.4zM640 533.333a34.133 34.133 0 110-68.266 34.133 34.133 0 010 68.266zm170.667 0a34.133 34.133 0 110-68.266 34.133 34.133 0 010 68.266z"/>
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
