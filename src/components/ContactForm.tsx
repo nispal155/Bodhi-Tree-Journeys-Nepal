@@ -52,6 +52,7 @@ export default function ContactForm() {
   const [apiErrors, setApiErrors] = useState<Record<string, string[]>>({});
   const [submitError, setSubmitError] = useState("");
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [showWeChatQR, setShowWeChatQR] = useState(false);
 
   const additionalServicesList = [
     "Photography & Festival",
@@ -212,13 +213,15 @@ export default function ContactForm() {
                 </a>
                 <button 
                   type="button"
-                  onClick={() => alert('WeChat ID: Lingyunnepal\n\nYou can also click the floating WeChat icon at the bottom right corner of the screen to scan our QR code!')}
-                  className="w-9 h-9 rounded-full bg-red-800/80 hover:bg-white hover:text-red-750 transition-colors flex items-center justify-center text-white"
+                  onClick={() => setShowWeChatQR(true)}
+                  className="w-9 h-9 rounded-full bg-white transition-colors flex items-center justify-center text-white overflow-hidden shadow-sm hover:shadow-md"
                   title="WeChat ID: Lingyunnepal"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024" fill="currentColor">
-                    <path d="M682.667 384c-34.133 0-64 8.533-89.6 17.067a360.533 360.533 0 00-209.067-187.734c-12.8-4.266-29.867-8.533-46.933-8.533-149.334 0-277.334 115.2-277.334 256s119.467 243.2 268.8 256h25.6l-29.866 59.733a18.773 18.773 0 0021.333 25.6l81.066-29.866h4.267a312.32 312.32 0 0055.467 4.266 211.2 211.2 0 00-4.267-34.133c0-149.333 132.267-273.067 298.667-273.067h8.533v-17.066c-17.066-38.4-55.466-68.267-106.666-68.267zM320 384a34.133 34.133 0 110-68.267 34.133 34.133 0 010 68.267zm213.333 0a34.133 34.133 0 110-68.267 34.133 34.133 0 010 68.267z"/><path d="M938.667 554.667c0-115.2-115.2-213.334-256-213.334s-256 98.134-256 213.334 115.2 213.333 256 213.333a277.333 277.333 0 0046.933-4.267l64 25.6a18.773 18.773 0 0021.334-21.333l-21.334-46.933a233.813 233.813 0 00145.067-166.4zM640 533.333a34.133 34.133 0 110-68.266 34.133 34.133 0 010 68.266zm170.667 0a34.133 34.133 0 110-68.266 34.133 34.133 0 010 68.266z"/>
-                  </svg>
+                  <img 
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv4-9nWCc0hJOQZ2XSkXUtroA1ebd59gLNEJmTGm2XU0yx5d_23o6llik&s=10" 
+                    alt="WeChat" 
+                    className="w-full h-full object-cover"
+                  />
                 </button>
               </div>
             </div>
@@ -414,6 +417,37 @@ export default function ContactForm() {
             referrerPolicy="no-referrer-when-downgrade"
           />
         </div>
+        {/* WeChat QR Modal */}
+        {showWeChatQR && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={() => setShowWeChatQR(false)}>
+            <div className="bg-white dark:bg-zinc-900 rounded-2xl p-6 shadow-2xl max-w-sm w-full transform transition-all" onClick={e => e.stopPropagation()}>
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                  <img 
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv4-9nWCc0hJOQZ2XSkXUtroA1ebd59gLNEJmTGm2XU0yx5d_23o6llik&s=10" 
+                    alt="WeChat" 
+                    className="w-6 h-6 rounded-md"
+                  />
+                  WeChat Connect
+                </h3>
+                <button onClick={() => setShowWeChatQR(false)} className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+              </div>
+              <div className="bg-gray-100 dark:bg-zinc-800 rounded-xl p-4 flex flex-col items-center">
+                <img src="/We-Chat.jpeg" alt="WeChat QR Code" className="w-full max-w-[250px] h-auto rounded-lg shadow-sm mb-4" />
+                <p className="text-gray-700 dark:text-gray-300 font-medium text-center">
+                  Scan to chat directly with<br />
+                  <strong className="text-red-600 dark:text-red-400">Jagadish Adhikari</strong>
+                </p>
+                <div className="mt-4 px-4 py-2 bg-white dark:bg-zinc-900 rounded-lg shadow-sm border border-gray-200 dark:border-zinc-700 w-full text-center">
+                  <span className="text-sm text-gray-500 dark:text-gray-400 block mb-1">WeChat ID</span>
+                  <span className="font-bold text-gray-900 dark:text-white select-all">Lingyunnepal</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
