@@ -65,33 +65,36 @@ export default function MapRoute({ routeString }: { routeString: string }) {
   const centerLng = positions.reduce((sum, pos) => sum + pos[1], 0) / positions.length;
 
   return (
-    <div className="w-full h-[400px] rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-zinc-800 relative z-0">
-      <MapContainer 
-        center={[centerLat, centerLng]} 
-        zoom={7} 
-        scrollWheelZoom={false}
-        className="w-full h-full"
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        
-        {markers.map((marker, idx) => (
-          <Marker key={idx} position={marker.coords} icon={customIcon}>
-            <Popup>{marker.name}</Popup>
-          </Marker>
-        ))}
-
-        {positions.length > 1 && (
-          <Polyline 
-            positions={positions} 
-            color="#f97316" // Tailwind orange-500
-            weight={3}
-            dashArray="5, 10"
+    <section>
+      <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Route Map</h2>
+      <div className="w-full h-[400px] rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-zinc-800 relative z-0">
+        <MapContainer 
+          center={[centerLat, centerLng]} 
+          zoom={7} 
+          scrollWheelZoom={false}
+          className="w-full h-full"
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-        )}
-      </MapContainer>
-    </div>
+          
+          {markers.map((marker, idx) => (
+            <Marker key={idx} position={marker.coords} icon={customIcon}>
+              <Popup>{marker.name}</Popup>
+            </Marker>
+          ))}
+
+          {positions.length > 1 && (
+            <Polyline 
+              positions={positions} 
+              color="#f97316" // Tailwind orange-500
+              weight={3}
+              dashArray="5, 10"
+            />
+          )}
+        </MapContainer>
+      </div>
+    </section>
   );
 }

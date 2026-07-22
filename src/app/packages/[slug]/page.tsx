@@ -173,10 +173,9 @@ export default async function PackageDetailsPage({ params }: { params: Promise<{
               </div>
             </section>
 
-            <section>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Route Map</h2>
+            {tour.route && tour.route.trim() !== "" && tour.route.toLowerCase() !== "n/a" && tour.route.toLowerCase() !== "none" && (
               <MapRouteWrapper routeString={tour.route} />
-            </section>
+            )}
 
             <section>
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Day by Day Itinerary</h2>
