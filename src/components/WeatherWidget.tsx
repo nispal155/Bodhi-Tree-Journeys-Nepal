@@ -13,6 +13,9 @@ const LOCATION_DICT: Record<string, [number, number]> = {
   "Bandipur": [27.9388, 84.4124],
   "Everest Base Camp": [28.0026, 86.8526],
   "Annapurna Base Camp": [28.5300, 83.8780],
+  "Namche Bazaar": [27.8069, 86.7140],
+  "Patan": [27.6766, 85.3184],
+  "Bhaktapur": [27.6724, 85.4283],
 };
 
 const ALTITUDE_DICT: Record<string, number> = {
@@ -24,6 +27,9 @@ const ALTITUDE_DICT: Record<string, number> = {
   "Bandipur": 1030,
   "Everest Base Camp": 5364,
   "Annapurna Base Camp": 4130,
+  "Namche Bazaar": 3440,
+  "Patan": 1362,
+  "Bhaktapur": 1401,
 };
 
 const AVERAGE_TEMP_DICT: Record<string, number> = {
@@ -35,6 +41,9 @@ const AVERAGE_TEMP_DICT: Record<string, number> = {
   "Bandipur": 18,
   "Everest Base Camp": -5,
   "Annapurna Base Camp": -2,
+  "Namche Bazaar": 5,
+  "Patan": 20,
+  "Bhaktapur": 19,
 };
 
 type WeatherData = {
@@ -64,34 +73,44 @@ export default function WeatherWidget({ routeString }: { routeString: string }) 
 
   useEffect(() => {
     const fetchWeather = async () => {
-      const coords = LOCATION_DICT[targetLocation];
-      if (!coords) {
-        setLoading(false);
-        return;
-      }
-
-      try {
-        const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${coords[0]}&longitude=${coords[1]}&current=temperature_2m,weather_code`);
-        const data = await res.json();
-        const temp = data.current.temperature_2m;
-        const code = data.current.weather_code;
-
-        setWeather({
-          temperature: temp,
-          isSunny: code <= 3,
-          isRaining: code >= 50 && code <= 67,
-          isSnowing: code >= 70,
-        });
-      } catch (e) {
-        console.error("Failed to fetch weather, using fallback average temperature.", e);
-        // Fallback to average temperature
-        const avgTemp = AVERAGE_TEMP_DICT[targetLocation] || 15;
+      const applyFallback = () => {
+        const avgTemp = AVERAGE_TEMP_DICT[targetLocation] || 20; // Default to 20 for unknown places like "Kathmandu Valley"
         setWeather({
           temperature: avgTemp,
           isSunny: true,
           isRaining: false,
           isSnowing: avgTemp < 0,
         });
+      };
+
+      const coords = LOCATION_DICT[targetLocation];
+      if (!coords) {
+        applyFallback();
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${coords[0]}&longitude=${coords[1]}&current=temperature_2m,weather_code`);
+        if (!res.ok) throw new Error("API responded with an error");
+        const data = await res.json();
+        
+        if (data.current && typeof data.current.temperature_2m === 'number') {
+          const temp = data.current.temperature_2m;
+          const code = data.current.weather_code;
+
+          setWeather({
+            temperature: temp,
+            isSunny: code <= 3,
+            isRaining: code >= 50 && code <= 67,
+            isSnowing: code >= 70,
+          });
+        } else {
+          throw new Error("Invalid data format");
+        }
+      } catch (e) {
+        console.error("Failed to fetch weather, using fallback average temperature.", e);
+        applyFallback();
       } finally {
         setLoading(false);
       }
