@@ -24,9 +24,6 @@ export default function Navigation() {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
-    { name: "Pilgrimages", href: "/pilgrimages" },
-    { name: "Treks", href: "/treks" },
-    { name: "Cultural Tours", href: "/cultural-tours" },
     { name: "Packages", href: "/packages" },
     { name: "Gallery", href: "/gallery" },
     { name: "Contact", href: "/contact" },

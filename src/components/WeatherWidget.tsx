@@ -26,6 +26,17 @@ const ALTITUDE_DICT: Record<string, number> = {
   "Annapurna Base Camp": 4130,
 };
 
+const AVERAGE_TEMP_DICT: Record<string, number> = {
+  "Kathmandu": 20,
+  "Pokhara": 22,
+  "Chitwan": 28,
+  "Lumbini": 30,
+  "Nagarkot": 15,
+  "Bandipur": 18,
+  "Everest Base Camp": -5,
+  "Annapurna Base Camp": -2,
+};
+
 type WeatherData = {
   temperature: number;
   isSunny: boolean;
@@ -72,7 +83,15 @@ export default function WeatherWidget({ routeString }: { routeString: string }) 
           isSnowing: code >= 70,
         });
       } catch (e) {
-        console.error("Failed to fetch weather", e);
+        console.error("Failed to fetch weather, using fallback average temperature.", e);
+        // Fallback to average temperature
+        const avgTemp = AVERAGE_TEMP_DICT[targetLocation] || 15;
+        setWeather({
+          temperature: avgTemp,
+          isSunny: true,
+          isRaining: false,
+          isSnowing: avgTemp < 0,
+        });
       } finally {
         setLoading(false);
       }
