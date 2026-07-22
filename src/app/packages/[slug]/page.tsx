@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Clock, Map, Calendar, Sun, CheckCircle2, XCircle, ArrowLeft } from "lucide-react";
 
-import MapRouteWrapper from "@/components/MapRouteWrapper";
+
 import WeatherWidget from "@/components/WeatherWidget";
 import { tourPackages } from "@/data/packages";
 import Navigation from "@/components/Navigation";
@@ -172,10 +172,6 @@ export default async function PackageDetailsPage({ params }: { params: Promise<{
                 </ul>
               </div>
             </section>
-
-            {tour.route && tour.route.trim() !== "" && tour.route.toLowerCase() !== "n/a" && tour.route.toLowerCase() !== "none" && (
-              <MapRouteWrapper routeString={tour.route} />
-            )}
 
             <section>
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Day by Day Itinerary</h2>
