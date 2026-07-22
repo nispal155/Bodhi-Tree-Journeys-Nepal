@@ -20,6 +20,12 @@ export default function Testimonials() {
       country: "ITALY",
       quote: "Visiting Lumbini with Bodhi Tree Journeys was deeply moving. The small group size allowed for quiet reflection, and the added meditation sessions in the evenings were perfectly arranged.",
       avatar: "/avatar-3.jpg"
+    },
+    {
+      name: "Li Wei (李伟)",
+      country: "CHINA",
+      quote: "非常棒的旅行体验！团队安排非常周到，从加德满都的文化探索到美丽的自然风光，每一步都让人惊喜。导游不仅专业而且非常热情。极力推荐！",
+      avatar: "/avatar-4.jpg"
     }
   ];
 
@@ -29,7 +35,7 @@ export default function Testimonials() {
         <p className="text-sm font-semibold tracking-widest text-orange-400 mb-4 uppercase text-center">Testimonials</p>
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-16">Stories from the Path</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {testimonials.map((testimonial, i) => (
             <div key={i} className="group bg-white/70 dark:bg-zinc-900/40 backdrop-blur-md p-8 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.7)] border border-white/50 dark:border-white/10 text-left relative transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-orange-200 dark:hover:border-orange-500/50 cursor-pointer">
               <div className="flex gap-1 mb-6 text-orange-400 transition-transform duration-300 group-hover:scale-110 group-hover:origin-left">
