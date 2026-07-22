@@ -7,9 +7,19 @@ interface ImageSliderProps {
   images: string[];
   alt: string;
   className?: string;
+  imageClassName?: string;
+  objectFit?: "cover" | "contain";
+  showDots?: boolean;
 }
 
-export default function ImageSlider({ images, alt, className = "" }: ImageSliderProps) {
+export default function ImageSlider({ 
+  images, 
+  alt, 
+  className = "",
+  imageClassName = "",
+  objectFit = "contain",
+  showDots = true
+}: ImageSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -35,13 +45,13 @@ export default function ImageSlider({ images, alt, className = "" }: ImageSlider
             src={src}
             alt={`${alt} - Image ${idx + 1}`}
             fill
-            className="object-contain bg-black/5"
+            className={`object-${objectFit} bg-black/5 ${imageClassName}`}
             priority={idx === 0}
           />
         </div>
       ))}
       
-      {images.length > 1 && (
+      {showDots && images.length > 1 && (
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
           {images.map((_, idx) => (
             <div

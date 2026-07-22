@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 import { tourPackages } from "@/data/packages";
+import ImageSlider from "@/components/ImageSlider";
 
 interface TourCategoriesProps {
   limit?: number;
@@ -54,14 +55,15 @@ export default function TourCategories({ limit, showViewAll = false, hideHeader 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left mb-16">
           {journeys.map((tour, i) => (
             <div key={i} className="group bg-white/70 dark:bg-zinc-900/40 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.7)] border border-white/50 dark:border-white/10 overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(255,100,0,0.2)] dark:hover:shadow-[0_20px_40px_-15px_rgba(255,100,0,0.4)] hover:border-orange-200 dark:hover:border-orange-500/50">
-              <Link href={`/packages/${tour.slug}`} className="block relative h-64 w-full overflow-hidden cursor-pointer">
-                <Image
-                  src={tour.image}
+              <Link href={`/packages/${tour.slug}`} className="block relative h-64 w-full overflow-hidden cursor-pointer group/slider">
+                <ImageSlider 
+                  images={[tour.image, ...(tour.images || [])]} 
                   alt={tour.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  objectFit="cover"
+                  showDots={false}
+                  imageClassName="transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute top-4 left-4 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
+                <div className="absolute top-4 left-4 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md z-30">
                   {tour.duration}
                 </div>
               </Link>

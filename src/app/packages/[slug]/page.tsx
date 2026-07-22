@@ -77,8 +77,8 @@ export default async function PackageDetailsPage({ params }: { params: Promise<{
 
       {/* Hero Section */}
       <div className="relative w-full h-[60vh] min-h-[500px]">
-        {tour.images && tour.images.length > 0 ? (
-          <ImageSlider images={tour.images} alt={tour.title} />
+        {(tour.images && tour.images.length > 0) ? (
+          <ImageSlider images={Array.from(new Set([tour.image, ...tour.images]))} alt={tour.title} />
         ) : (
           <Image
             src={tour.image}
