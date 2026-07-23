@@ -30,15 +30,11 @@ export default function Footer() {
               </a>
               <button 
                 onClick={() => setShowWeChatQR(true)}
-                className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:shadow-lg transition-all cursor-pointer overflow-hidden"
+                className="w-10 h-10 rounded-full bg-red-800 flex items-center justify-center hover:bg-white hover:text-red-700 transition-colors cursor-pointer text-white"
                 title="WeChat"
               >
                 <span className="sr-only">WeChat</span>
-                <img 
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv4-9nWCc0hJOQZ2XSkXUtroA1ebd59gLNEJmTGm2XU0yx5d_23o6llik&s=10" 
-                  alt="WeChat" 
-                  className="w-full h-full object-cover"
-                />
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16.591,9.754c-0.208,0-0.426,0.016-0.638,0.038c-0.342-3.111-3.69-5.63-7.795-5.63 c-4.321,0-7.818,2.772-7.818,6.197c0,1.916,1.066,3.633,2.715,4.783l-0.702,2.216l2.42-1.258 c1.011,0.301,2.155,0.463,3.385,0.463c0.413,0,0.817-0.024,1.205-0.071c0.916,2.215,3.364,3.771,6.228,3.771 c3.518,0,6.377-2.26,6.377-5.045C21.968,12.016,19.648,9.754,16.591,9.754z M6.438,7.994c0.552,0,1,0.448,1,1s-0.448,1-1,1 s-1-0.448-1-1S5.886,7.994,6.438,7.994z M10.457,7.994c0.552,0,1,0.448,1,1s-0.448,1-1,1s-1-0.448-1-1S9.905,7.994,10.457,7.994z M14.195,14.621c-0.448,0-0.812-0.364-0.812-0.812s0.364-0.812,0.812-0.812s0.812,0.364,0.812,0.812S14.643,14.621,14.195,14.621z M17.443,14.621c-0.448,0-0.812-0.364-0.812-0.812s0.364-0.812,0.812-0.812s0.812,0.364,0.812,0.812S17.892,14.621,17.443,14.621z"/></svg>
               </button>
             </div>
           </div>
